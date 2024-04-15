@@ -7,11 +7,11 @@
 
 Bomb::Bomb(int x, int y, int type)
 {
-    bombTexture = TextureManager::LoadTexture("Assets/Object/bomb.png");
+    bombTexture = TextureManager::LoadTexture("Assets/Object/bomb.png"); // ok
     xBomb = x, yBomb = y;
     xpos = x, ypos = y;
-    typeBomb = type;
-    bombRect.x = x + 10,bombRect.y = y + 10;
+    typeBomb = type; // ok
+    bombRect.x = x + 10,bombRect.y = y + 10; // ok
     bombRect.w = 12, bombRect.y = 12;
 }
 void Bomb::Update(Map* map)

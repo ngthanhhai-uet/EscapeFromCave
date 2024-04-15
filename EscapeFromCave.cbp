@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="Bat.cpp" />
 		<Unit filename="Bat.hpp" />
+		<Unit filename="Bomb.cpp" />
+		<Unit filename="Bomb.hpp" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.hpp" />
 		<Unit filename="Map.cpp" />

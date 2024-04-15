@@ -173,16 +173,6 @@ void Game::updateGame()
 
 
 
-
-
-
-
-
-
-
-
-
-
 void Game::handleEvent()
 {
     SDL_Event gEvent;

@@ -18,7 +18,6 @@ public:
     void updateGame();
     void renderGame();
     void closeGame();
-
     bool isRunning;
     bool isEnglish = true;
     bool isLose = false;

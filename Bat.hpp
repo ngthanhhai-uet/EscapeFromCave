@@ -15,7 +15,6 @@ public:
     void Render(int x, int y);
     // Atribute //
     int xBat, yBat;
-    int xpos, ypos;
     int vBat = 1;
     int typeBat;
     // Render //

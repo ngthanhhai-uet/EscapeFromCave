@@ -1,4 +1,3 @@
-
 #ifndef Player_hpp
 #define Player_hpp
 #include "Game.hpp"
