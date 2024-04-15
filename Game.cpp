@@ -20,7 +20,6 @@ SDL_Rect camera;
 void Game::renderGame()
 {
     SDL_RenderClear(gRenderer);
-    //-------------------------------------------------------------//
     switch(gState)
     {
     case MENU:
@@ -69,7 +68,6 @@ void Game::renderGame()
     default:
         break;
     }
-    //--------------------------------------------------------------//
     SDL_RenderPresent(gRenderer);
 }
 void Game::enterState(State id)
