@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1713187847 source:x:\escapefromcave\main.cpp
+	"Game.hpp"
+
+1713187847 x:\escapefromcave\game.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
