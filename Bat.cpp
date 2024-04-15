@@ -19,16 +19,18 @@ void Bat::Update()
     {
         if(xpos == xBat - 64 || xBat + 64 == xpos) vBat = -vBat;
         xpos += vBat;
-        batRect.x = xpos;
+//        batRect.x = xpos;
     }
     else
     {
-        if(ypos == yBat - 64 || yBat + 64 == ypos) yBat = - yBat;
+        if(ypos == yBat - 64 || yBat + 64 == ypos) vBat = - vBat;
         ypos += vBat;
-        batRect.y = ypos;
+//        batRect.y = ypos;
     }
 }
-void Bat::Render()
+void Bat::Render(int x, int y)
 {
+    batRect.x = 480 + xpos - x;
+    batRect.y = 320 + ypos - y;
     SDL_RenderCopy(Game::gRenderer, batTexture, nullptr, &batRect);
 }

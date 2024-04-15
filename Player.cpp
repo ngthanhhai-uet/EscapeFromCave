@@ -110,12 +110,9 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
         break;
     }
 }
-void Player::Update(SDL_Rect &camera, int &x, int &y)
+void Player::Update(SDL_Rect &camera, int x, int y)
 {
-    camera.x = x - 480;
-    camera.y = y - 320;
-    x = camera.x + 480;
-    y = camera.y + 320;
+    camera.x = x - 480; camera.y = y - 320;
 }
 void Player::Render()
 {

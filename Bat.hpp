@@ -5,14 +5,13 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-
 class Bat {
 private:
 public:
     // Method //
     Bat(int x, int y, int type);
     void Update();
-    void Render();
+    void Render(int x, int y);
     // Atribute //
     int xBat, yBat;
     int xpos, ypos;

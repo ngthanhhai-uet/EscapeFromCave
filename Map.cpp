@@ -21,10 +21,7 @@ void Map::LoadMap(int level)
     curr_map.resize(height, std::vector<int>(width));
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < width; j++)
-        {
-            file >> curr_map[i][j];
-        }
+        for (int j = 0; j < width; j++) {file >> curr_map[i][j];}
     }
     file.close();
 }
@@ -35,7 +32,7 @@ void Map::DrawMap(SDL_Rect camera)
         {
             dest.x = j * 32; dest.y = i * 32;
             int ID = curr_map[i+camera.y/32][j+camera.x/32];
-            if (ID % 19 == 0){ src.y = (ID / 19 - 1) * 32; src.x = 18 * 32; }
+            if (ID % 19 == 0) {src.y = (ID / 19 - 1) * 32; src.x = 18 * 32;}
             else {src.y = (ID / 19) * 32; src.x = (ID % 19 - 1) * 32; }
             TextureManager::Draw(tile, src, dest);
         }

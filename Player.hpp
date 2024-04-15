@@ -14,7 +14,7 @@ public:
     Player(const char* pngfile, int x, int y);
     ~Player();
     void Handle(SDL_Event e, Game* game, Map *map);
-    void Update(SDL_Rect &camera, int &x, int &y);
+    void Update(SDL_Rect &camera, int x, int y);
     void Render();
     bool Collision(SDL_Rect rect);
     // Attribute //

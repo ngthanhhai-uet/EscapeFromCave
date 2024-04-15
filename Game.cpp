@@ -53,10 +53,10 @@ void Game::renderGame()
         map->DrawMap(camera); player->Render();
         break;
     case LEVEL2:
-        map->DrawMap(camera); player->Render(); bat->Render();
+        map->DrawMap(camera); player->Render(); bat->Render(player->xpos, player->ypos);
         break;
     case LEVEL3:
-        map->DrawMap(camera); player->Render(); bat->Render();
+        map->DrawMap(camera); player->Render(); bat->Render(player->xpos, player->ypos);
         break;
     default:
         break;
@@ -104,8 +104,7 @@ void Game::enterState(State id)
         player = new Player("Assets/Character/spider.png",48 * 32 ,10 * 32);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         map = new Map(2);
-        bat = new Bat(48*32,10*32,0);
-        if(!bat) std::cout << "Sai";
+        bat = new Bat(48*32, 10*32, 0);
         break;
     case LEVEL3:
         Mix_FadeOutMusic(500);
@@ -113,8 +112,7 @@ void Game::enterState(State id)
         player = new Player("Assets/Character/spider.png",19 * 32 ,37 * 32);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         map = new Map(3);
-        bat = new Bat(10*32, 10*32, 1);
-        if(!bat) std::cout << "Sai";
+        bat = new Bat(19 * 32, 37 * 32, 0);
     default:
         break;
     }
@@ -151,12 +149,12 @@ void Game::updateGame()
         player->Update(camera, player->xpos, player->ypos);
         break;
     case LEVEL2:
-        bat->Update();
         player->Update(camera, player->xpos, player->ypos);
+        bat->Update();
         break;
     case LEVEL3:
-        bat->Update();
         player->Update(camera, player->xpos, player->ypos);
+        bat->Update();
         break;
     default:
         break;

@@ -32,6 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Bat.cpp" />
+		<Unit filename="Bat.hpp" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.hpp" />
+		<Unit filename="Map.cpp" />
+		<Unit filename="Map.hpp" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.hpp" />
+		<Unit filename="TextManager.cpp" />
+		<Unit filename="TextManager.hpp" />
+		<Unit filename="TextureManager.cpp" />
+		<Unit filename="TextureManager.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

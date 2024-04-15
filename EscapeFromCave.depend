@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1713187847 source:x:\escapefromcave\main.cpp
+1713188466 source:x:\escapefromcave\main.cpp
 	"Game.hpp"
 
 1713187847 x:\escapefromcave\game.hpp
@@ -8,4 +8,81 @@
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<SDL_ttf.h>
+
+1713193776 source:x:\escapefromcave\bat.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"TextureManager.hpp"
+	"Player.hpp"
+
+1713193456 x:\escapefromcave\bat.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713189301 x:\escapefromcave\map.hpp
+	<iostream>
+	<fstream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<vector>
+	<string>
+
+1713187847 x:\escapefromcave\texturemanager.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713192984 x:\escapefromcave\player.hpp
+	"Game.hpp"
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713193949 source:x:\escapefromcave\game.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"TextureManager.hpp"
+	"Player.hpp"
+	"TextManager.hpp"
+
+1713187847 x:\escapefromcave\textmanager.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<string>
+
+1713189301 source:x:\escapefromcave\map.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"TextureManager.hpp"
+	"Player.hpp"
+
+1713192975 source:x:\escapefromcave\player.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"TextureManager.hpp"
+	"Player.hpp"
+
+1713187847 source:x:\escapefromcave\textmanager.cpp
+	"Game.hpp"
+	"TextManager.hpp"
+
+1713187847 source:x:\escapefromcave\texturemanager.cpp
+	"Game.hpp"
+	"TextureManager.hpp"
 
