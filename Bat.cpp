@@ -13,24 +13,24 @@ Bat::Bat(int x, int y, int type)
     batRect.w = 32; batRect.h = 32;
     typeBat = type;
 }
-void Bat::Update()
+void Bat::Update(Map* map)
 {
     if(!typeBat)
     {
-        if(xpos == xBat - 64 || xBat + 64 == xpos) vBat = -vBat;
+        if(map->curr_map[ypos/32][xpos/32+1] <= 46) vBat = -1;
+        if(map->curr_map[ypos/32][(xpos-1)/32] <= 46) vBat = 1;
         xpos += vBat;
-//        batRect.x = xpos;
     }
     else
     {
-        if(ypos == yBat - 64 || yBat + 64 == ypos) vBat = - vBat;
+        if(map->curr_map[ypos/32+1][xpos/32] <= 46) vBat = -1;
+        if(map->curr_map[(ypos-1)/32][xpos/32] <= 46) vBat = 1;
         ypos += vBat;
-//        batRect.y = ypos;
     }
 }
 void Bat::Render(int x, int y)
 {
-    batRect.x = 480 + xpos - x;
-    batRect.y = 320 + ypos - y;
+    batRect.x = xpos - x + 480;
+    batRect.y = ypos - y + 320;
     SDL_RenderCopy(Game::gRenderer, batTexture, nullptr, &batRect);
 }

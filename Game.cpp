@@ -4,6 +4,7 @@
 #include "TextureManager.hpp"
 #include "Player.hpp"
 #include "TextManager.hpp"
+#include "Bomb.hpp"
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
@@ -12,6 +13,7 @@ Mix_Music* gMusic = NULL;
 TextManager* text;
 Map* map;
 Bat* bat;
+Bomb* bomb;
 Player* player;
 SDL_Rect camera;
 
@@ -50,13 +52,19 @@ void Game::renderGame()
         SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
         break;
     case LEVEL1:
-        map->DrawMap(camera); player->Render();
+        map->DrawMap(camera);
+        player->Render();
         break;
     case LEVEL2:
-        map->DrawMap(camera); player->Render(); bat->Render(player->xpos, player->ypos);
+        map->DrawMap(camera);
+        player->Render();
+        bat->Render(player->xpos, player->ypos);
         break;
     case LEVEL3:
-        map->DrawMap(camera); player->Render(); bat->Render(player->xpos, player->ypos);
+        map->DrawMap(camera);
+        player->Render();
+        bat->Render(player->xpos, player->ypos);
+        bomb->Render(player->xpos, player->ypos);
         break;
     default:
         break;
@@ -113,6 +121,7 @@ void Game::enterState(State id)
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         map = new Map(3);
         bat = new Bat(19 * 32, 37 * 32, 0);
+        bomb = new Bomb(30 * 32, 40 * 32, 4);
     default:
         break;
     }
@@ -150,11 +159,12 @@ void Game::updateGame()
         break;
     case LEVEL2:
         player->Update(camera, player->xpos, player->ypos);
-        bat->Update();
+        bat->Update(map);
         break;
     case LEVEL3:
         player->Update(camera, player->xpos, player->ypos);
-        bat->Update();
+        bat->Update(map);
+        bomb->Update(map);
         break;
     default:
         break;
