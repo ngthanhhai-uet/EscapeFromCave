@@ -15,7 +15,7 @@ public:
 
     void initGame();
     void handleEvent();
-    void updateGame();
+    void updateGame(int x);
     void renderGame();
     void closeGame();
     bool isRunning;

@@ -146,7 +146,7 @@ void Game::exitState(State id)
         break;
     }
 }
-void Game::updateGame()
+void Game::updateGame(int x)
 {
     if(isLose) {switchState(LOSE); isLose = false;}
     if(isWin) {switchState(WIN); isWin = false;}
@@ -161,7 +161,7 @@ void Game::updateGame()
         break;
     case LEVEL3:
         player->Update(camera, player->xpos, player->ypos);
-        bat->Update(map);
+        if(x == 0) bat->Update(map);
         bomb->Update(map);
         break;
     default:

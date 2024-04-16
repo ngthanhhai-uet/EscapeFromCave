@@ -17,7 +17,8 @@ void TextManager::Render(const char* text, int x, int y, int type)
     dest.y = y - textSurface->h / 2;
     SDL_RenderCopy(Game::gRenderer, textTexture, nullptr, &dest);
 }
-TextManager:: ~TextManager() {
+TextManager::~TextManager()
+{
     TTF_CloseFont(textFont);
     textFont = nullptr;
     SDL_DestroyTexture(textTexture);
