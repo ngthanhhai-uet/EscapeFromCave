@@ -15,16 +15,12 @@ public:
     void Handle(SDL_Event e, Game* game, Map *map);
     void Update(SDL_Rect &camera, int x, int y);
     void Render();
-    bool Collision(SDL_Rect rect);
+    bool Collision(SDL_Rect hitbox);
     // Attribute //
-    int xpos;
-    int ypos;
-    int velocity;
+    int xpos, ypos;
     double degrees;
     SDL_RendererFlip flip;
     // Render //
     SDL_Texture* playerTexture;
-    SDL_Rect src;
-    SDL_Rect dest = {480,320,32,32};
 };
 #endif

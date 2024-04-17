@@ -47,6 +47,5 @@ public:
     int currentLevel = 1;
     SDL_Window* gWindow;
     static SDL_Renderer* gRenderer;
-
 };
 #endif

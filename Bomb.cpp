@@ -7,43 +7,51 @@
 
 Bomb::Bomb(int x, int y, int type)
 {
-    bombTexture = TextureManager::LoadTexture("Assets/Object/bomb.png"); // ok
-    xBomb = x, yBomb = y;
-    xpos = x, ypos = y;
-    typeBomb = type; // ok
-    bombRect.x = x + 10,bombRect.y = y + 10; // ok
-    bombRect.w = 12, bombRect.y = 12;
+    bombTexture = TextureManager::LoadTexture("Assets/Object/bomb.png");
+    xBomb = x; yBomb = y; typeBomb = type; xStart = x; yStart = y;
+    hitbox.x = x; hitbox.y = y; hitbox.w = 16; hitbox.h = 16;
 }
 void Bomb::Update(Map* map)
 {
-    if(typeBomb == 1)
+    if(typeBomb == 1) // right //
     {
-        if(map->curr_map[ypos/32][xpos/32+1] <= 46) {xpos = xBomb; ypos = yBomb;}
-        xpos++;
-        bombRect.x = xpos + 10;
+        if(map->curr_map[yBomb/32][xBomb/32+2] <= 46)
+        {
+            xBomb = xStart;
+            yBomb = yStart;
+        }
+        xBomb += 2;
     }
-    if(typeBomb == 2)
+    if(typeBomb == 2) // left //
     {
-        if(map->curr_map[ypos/32][(xpos-1)/32] <= 46) {xpos = xBomb; ypos = yBomb;}
-        xpos--;
-        bombRect.x = xpos + 10;
+        if(map->curr_map[yBomb/32][(xBomb-2)/32] <= 46)
+        {
+            xBomb = xStart;
+            yBomb = yStart;
+        }
+        xBomb -= 2;
     }
-    if (typeBomb == 3)
+    if(typeBomb == 3) // down //
     {
-        if(map->curr_map[ypos/32+1][xpos/32] <= 46) {xpos = xBomb; ypos = yBomb;}
-        ypos++;
-        bombRect.y = ypos + 10;
+        if(map->curr_map[yBomb/32+2][xBomb/32] <= 46)
+        {
+            xBomb = xStart;
+            yBomb = yStart;
+        }
+        yBomb += 2;
     }
-    if (typeBomb == 4)
+    if(typeBomb == 4) // up //
     {
-        if(map->curr_map[(ypos-1)/32][xpos/32] <= 46) {xpos = xBomb; ypos = yBomb;}
-        ypos++;
-        bombRect.y = ypos + 10;
+        if(map->curr_map[yBomb/32][xBomb/32+2] <= 46)
+        {
+            xBomb = xStart;
+            yBomb = yStart;
+        }
+        yBomb -= 2;
     }
 }
 void Bomb::Render(int x, int y)
 {
-    bombRect.x = xpos - x + 480;
-    bombRect.y = ypos - y + 320;
-    SDL_RenderCopy(Game::gRenderer, bombTexture, nullptr, &bombRect);
+    SDL_Rect temp = {xBomb - x  + 488, yBomb - y + 328, 16, 16};
+    SDL_RenderCopy(Game::gRenderer, bombTexture, nullptr, &temp);
 }

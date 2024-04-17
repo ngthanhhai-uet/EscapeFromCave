@@ -9,16 +9,13 @@
 class Bat {
 private:
 public:
-    // Method //
     Bat(int x, int y, int type);
     void Update(Map *map);
     void Render(int x, int y);
-    // Atribute //
     int xBat, yBat;
     int vBat = 1;
     int typeBat;
-    // Render //
+    SDL_Rect hitbox;
     SDL_Texture* batTexture;
-    SDL_Rect batRect;
 };
 #endif

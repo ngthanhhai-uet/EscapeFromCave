@@ -18,4 +18,4 @@ public:
     ~TextManager();
     void Render(const char* text, int x, int y, int type);
 };
-#endif // TextManager_hpp
+#endif

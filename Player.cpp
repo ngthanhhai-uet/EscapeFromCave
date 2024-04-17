@@ -9,15 +9,18 @@ Player::Player(const char* pngfile, int x, int y)
     playerTexture = TextureManager::LoadTexture(pngfile);
     xpos = x; ypos = y;
 }
-bool Player::Collision(SDL_Rect rect)
+bool Player::Collision(SDL_Rect hitbox)
 {
-    if (xpos + 32 <= rect.x || rect.x + 32 <= xpos || ypos + 32 <= rect.y || rect.y + 32 <= ypos)  return false;
+    if(xpos + 32 <= hitbox.x || hitbox.x + hitbox.w <= xpos || ypos + 32 <= hitbox.y || hitbox.y + hitbox.h <= ypos) return false;
     return true;
 }
 void Player::Handle(SDL_Event e, Game* game, Map *map)
 {
     switch(e.key.keysym.sym)
     {
+    case SDLK_ESCAPE:
+        game->isLose = true;
+        break;
     case SDLK_DOWN:
         flip = SDL_FLIP_NONE; degrees = +90;
         while(1)
@@ -116,5 +119,6 @@ void Player::Update(SDL_Rect &camera, int x, int y)
 }
 void Player::Render()
 {
-    SDL_RenderCopyEx(Game::gRenderer, playerTexture, NULL, &dest, degrees, NULL, flip);
+    SDL_Rect temp = {480,320,32,32};
+    SDL_RenderCopyEx(Game::gRenderer, playerTexture, NULL, &temp, degrees, NULL, flip);
 }

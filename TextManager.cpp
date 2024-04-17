@@ -2,7 +2,7 @@
 #include "TextManager.hpp"
 
 TextManager::TextManager(int fontSize) {
-    textFont = TTF_OpenFont("Assets/Font/SairaExtraCondensed-SemiBold.ttf", fontSize);
+    textFont = TTF_OpenFont("Assets/Font/Planes_ValMore.ttf", fontSize);
     textTexture = nullptr;
     textSurface = nullptr;
 }
