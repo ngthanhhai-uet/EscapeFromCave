@@ -258,7 +258,7 @@ void Game::enterState(State id){
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         map = new Map(3);
         bat = new Bat(19 * 32, 37 * 32, 0);
-        bomb = new Bomb(18 * 32, 34 * 32, 1);
+        bomb = new Bomb(20 * 32, 28 * 32, 1);
     default:
         break;
     }
@@ -298,6 +298,7 @@ void Game::updateGame(int x){
     case LEVEL3:
         player->Update(camera, player->xpos, player->ypos);
         if(x == 0) bat->Update(map);
+        if(x == 0) bomb->Update(map);
         if(player->Collision(bat->hitbox)) isLose = true;
         if(player->Collision(bomb->hitbox)) isLose = true;
         break;

@@ -15,43 +15,47 @@ void Bomb::Update(Map* map)
 {
     if(typeBomb == 1) // right //
     {
-        if(map->curr_map[yBomb/32][xBomb/32+2] <= 46)
+        xBomb += 4;
+        if(map->curr_map[yBomb/32][(xBomb+4)/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        xBomb += 2;
+        hitbox.x = xBomb;
     }
     if(typeBomb == 2) // left //
     {
-        if(map->curr_map[yBomb/32][(xBomb-2)/32] <= 46)
+        if(map->curr_map[yBomb/32][(xBomb-4)/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        xBomb -= 2;
+        xBomb -= 4;
+        hitbox.x = xBomb;
     }
     if(typeBomb == 3) // down //
     {
-        if(map->curr_map[yBomb/32+2][xBomb/32] <= 46)
+        if(map->curr_map[(yBomb+4)/32][xBomb/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        yBomb += 2;
+        yBomb += 4;
+        hitbox.y = yBomb;
     }
     if(typeBomb == 4) // up //
     {
-        if(map->curr_map[yBomb/32][xBomb/32+2] <= 46)
+        if(map->curr_map[(yBomb-4)/32][xBomb/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        yBomb -= 2;
+        yBomb -= 4;
+        hitbox.y = yBomb;
     }
 }
 void Bomb::Render(int x, int y)
 {
-    SDL_Rect temp = {xBomb - x  + 488, yBomb - y + 328, 16, 16};
+    SDL_Rect temp = {xBomb - x  + 490, yBomb - y + 330, 12, 12};
     SDL_RenderCopy(Game::gRenderer, bombTexture, nullptr, &temp);
 }
