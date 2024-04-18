@@ -1,19 +1,20 @@
-# **ESCAPE FROM CAVE - made by ngthanhhai**
+# **ESCAPE FROM CAVE - ngthanhhai**
 ## INTRODUCE:
 This is an assignment from Advanced Programming - INT2215
 ## IDEA:
-Based on basic 2-D game, inspired by a classic, using SDL2.0 and written in C++ with some upgrades.
+Based on Pacman & GeometryDash, using SDL2.0 and written in C++ with some upgrades
 ## REFERENCE:
 ### *Guide*:
 + Lazyfoo Productions: https://lazyfoo.net/tutorials/SDL/index.php
-+ Let's Make Game: https://www.youtube.com/@CarlBirch
-+ Madsycode Tutorial: https://www.youtube.com/playlist?list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_
 + SDL2.0: https://www.libsdl.org
++ Let's Make Game: https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=3 (Making a game loop)
++ Madsycode Tutorial: https://www.youtube.com/watch?v=rLWlnPwR1uI&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_&index=14&t=1s (Creating map)
++ ChatGPT4: https://chat.openai.com
 ### *Graphics*: 
 + Interface and entities: https://itch.io
-+ Background: My own design
++ Background: My own design: https://www.canva.com
 ### *Sounds:*
-+ Some soundtracks on youtube
++ Some soundtracks: https://www.youtube.com
 ## HOW TO OPEN
 
 ## HOW TO PLAY
