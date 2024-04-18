@@ -3,8 +3,8 @@
 #include "TextureManager.hpp"
 Peak::Peak(int x, int y)
 {
-    peakon = TextureManager::LoadTexture("Assets/Object/peak1.png");
-    peakoff = TextureManager::LoadTexture("Assets/Object/peak2.png");
+    peakon = TextureManager::LoadTexture("Assets/Object/peakon.png");
+    peakoff = TextureManager::LoadTexture("Assets/Object/peakoff.png");
     xPeak = x; yPeak = y;
     hitbox.x = x - 32;
     hitbox.y = y - 32;
@@ -20,20 +20,20 @@ int Peak::deltaTime()
 }
 void Peak::Update()
 {
-    if(isExpand)
+    if(activated)
     {
         onTime += deltaTime();
-        if(onTime >= 2000) { isExpand = false; onTime = 0; }
+        if(onTime >= 2000) { activated = false; onTime = 0; }
     }
     else
     {
         offTime += deltaTime();
-        if(offTime >= 3000) { isExpand = true; offTime = 0; }
+        if(offTime >= 3000) { activated = true; offTime = 0; }
     }
 }
 void Peak::Render(int x, int y)
 {
     SDL_Rect temp = {xPeak - x + 448, yPeak - y + 288, 96, 96};
-    if(isExpand) SDL_RenderCopy(Game::gRenderer, peakon, nullptr, &temp);
+    if(activated) SDL_RenderCopy(Game::gRenderer, peakon, nullptr, &temp);
     else SDL_RenderCopy(Game::gRenderer, peakoff, nullptr, &temp);
 }

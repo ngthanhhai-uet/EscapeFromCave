@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include "Bat.hpp"
 #include "Map.hpp"
 #include "TextureManager.hpp"
 #include "Player.hpp"

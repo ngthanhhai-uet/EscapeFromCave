@@ -12,7 +12,7 @@ public:
     void Update();
     void Render(int x, int y);
     int xPeak; int yPeak;
-    bool isExpand = false;
+    bool activated = false;
     SDL_Rect hitbox;
     SDL_Texture* peakon;
     SDL_Texture* peakoff;

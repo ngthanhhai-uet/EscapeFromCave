@@ -41,7 +41,7 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1713365312 x:\escapefromcave\player.hpp
+1713438204 x:\escapefromcave\player.hpp
 	"Game.hpp"
 	<iostream>
 	<SDL.h>
@@ -49,7 +49,7 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1713402772 source:x:\escapefromcave\game.cpp
+1713438465 source:x:\escapefromcave\game.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
@@ -57,6 +57,7 @@
 	"Player.hpp"
 	"Bomb.hpp"
 	"Peak.hpp"
+	"Trap.hpp"
 	"TextManager.hpp"
 
 1713324382 x:\escapefromcave\textmanager.hpp
@@ -74,9 +75,8 @@
 	"TextureManager.hpp"
 	"Player.hpp"
 
-1713365361 source:x:\escapefromcave\player.cpp
+1713408512 source:x:\escapefromcave\player.cpp
 	"Game.hpp"
-	"Bat.hpp"
 	"Map.hpp"
 	"TextureManager.hpp"
 	"Player.hpp"
@@ -105,15 +105,25 @@
 	"Player.hpp"
 	"Bomb.hpp"
 
-1713402152 source:x:\escapefromcave\peak.cpp
+1713438233 source:x:\escapefromcave\peak.cpp
 	"Peak.hpp"
 	"Game.hpp"
 	"TextureManager.hpp"
 
-1713402834 x:\escapefromcave\peak.hpp
+1713438204 x:\escapefromcave\peak.hpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<SDL_ttf.h>
+
+1713437581 x:\escapefromcave\trap.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713438740 source:x:\escapefromcave\trap.cpp
+	"Game.hpp"
+	"Trap.hpp"
+	"TextureManager.hpp"
 

@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Bomb.hpp"
 #include "Peak.hpp"
+#include "Trap.hpp"
 #include "TextManager.hpp"
 Game::Game(){}
 Game::~Game(){}
@@ -17,6 +18,7 @@ Map* map;
 Bat* bat;
 Bomb* bomb;
 Peak* peak;
+Trap* trap;
 Player* player;
 SDL_Rect camera;
 
@@ -208,6 +210,7 @@ void Game::renderGame(){
         bat->Render(player->xpos, player->ypos);
         bomb->Render(player->xpos, player->ypos);
         peak->Render(player->xpos, player->ypos);
+        trap->Render(player->xpos, player->ypos);
         break;
     default:
         break;
@@ -264,6 +267,7 @@ void Game::enterState(State id){
         bat = new Bat(19 * 32, 37 * 32, 0);
         bomb = new Bomb(20 * 32, 28 * 32, 1);
         peak = new Peak(17 * 32, 30 * 32);
+        trap = new Trap(30 * 32, 39 * 32, 4);
     default:
         break;
     }
@@ -284,7 +288,7 @@ void Game::exitState(State id){
     case LEVEL2:
         Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; break;
     case LEVEL3:
-        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; peak = nullptr; break;
+        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; peak = nullptr; trap = nullptr; break;
     default:
         break;
     }
@@ -307,10 +311,23 @@ void Game::updateGame(int x){
             bat->Update(map);
             bomb->Update(map);
             peak->Update();
+            trap->Update();
         }
         if(player->Collision(bat->hitbox)) isLose = true;
         if(player->Collision(bomb->hitbox)) isLose = true;
-        if(peak->isExpand && player->Collision(peak->hitbox)) isLose = true;
+        if(player->Collision(peak->hitbox) && peak->activated) isLose = true;
+        if(player->Collision(trap->hitbox))
+        {
+            if(trap->activated)
+            {
+                if(SDL_GetTicks()-trap->activatedTime>500) isLose = true;
+            }
+            else
+            {
+                trap->activatedTime = SDL_GetTicks();
+                trap->activated = true;
+            }
+        }
         break;
     default:
         break;

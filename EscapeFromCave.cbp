@@ -81,6 +81,7 @@
 		<Unit filename="TextureManager.hpp">
 			<Option virtualFolder="Manager/" />
 		</Unit>
+		<Unit filename="Trap.cpp" />
 		<Unit filename="Trap.hpp">
 			<Option virtualFolder="Object/" />
 		</Unit>
