@@ -2,7 +2,7 @@
 ## INTRODUCE:
 This is an assignment from Advanced Programming - INT2215
 ## IDEA:
-Based on Tomb Of The Mask, inspired by a classic, using SDL2.0 and written in C++ with some upgrades.
+Based on Pacman & GeometryDash, using SDL2.0 and written in C++ with some upgrades
 ## REFERENCE:
 ### *Guide*:
 + Lazyfoo Productions: https://lazyfoo.net/tutorials/SDL/index.php
