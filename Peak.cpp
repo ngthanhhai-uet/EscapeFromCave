@@ -3,6 +3,8 @@
 #include "TextureManager.hpp"
 Peak::Peak(int x, int y)
 {
+    x *= 32;
+    y *= 32;
     peakon = TextureManager::LoadTexture("Assets/Object/peakon.png");
     peakoff = TextureManager::LoadTexture("Assets/Object/peakoff.png");
     xPeak = x; yPeak = y;

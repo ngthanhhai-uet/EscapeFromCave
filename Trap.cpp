@@ -4,6 +4,8 @@
 
 Trap::Trap(int x, int y, int type)
 {
+    x *= 32;
+    y *= 32;
     trapon = TextureManager::LoadTexture("Assets/Object/trapon.png");
     trapoff = TextureManager::LoadTexture("Assets/Object/trapoff.png");
     xTrap = x; yTrap = y;

@@ -6,6 +6,8 @@
 
 Bat::Bat(int x, int y, int type)
 {
+    x *= 32;
+    y *= 32;
     batTexture = TextureManager::LoadTexture("Assets/Object/bat.png");
     xBat = x; yBat = y;
     typeBat = type;

@@ -5,6 +5,8 @@
 
 Player::Player(const char* pngfile, int x, int y)
 {
+    x *= 32;
+    y *= 32;
     playerTexture = TextureManager::LoadTexture(pngfile);
     xpos = x; ypos = y;
 }

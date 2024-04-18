@@ -16,10 +16,10 @@ Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
 Map* map;
 Player* player;
-Bat* bat[3];
+Bat* bat[20];
 Bomb* bomb;
 Peak* peak;
-Trap* trap[10];
+Trap* trap[59];
 SDL_Rect camera;
 
 void Game::handleEvent(){
@@ -186,7 +186,7 @@ void Game::renderGame(){
         }
         else
         {
-            text->Render("BANG XEP HANG", 200, 580, 0); text->Render("CUA HANG", 505, 580, 0); text->Render("HUONG DAN", 800, 580, 0);
+            text->Render("DIEM CAO", 200, 580, 0); text->Render("CUA HANG", 505, 580, 0); text->Render("HUONG DAN", 800, 580, 0);
         }
         break;
     case GUIDE:
@@ -208,6 +208,16 @@ void Game::renderGame(){
         }
         break;
     case LEVEL2:
+        map->DrawMap(camera);
+        player->Render();
+        for (int i = 0; i < 59; i++)
+        {
+            trap[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            bat[i]->Render(player->xpos, player->ypos);
+        }
         break;
     case LEVEL3:
         break;
@@ -256,23 +266,107 @@ void Game::enterState(State id){
         Mix_FadeOutMusic(500);
         currentLevel = 1;
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/spider.png",25 * 32, 12 * 32);
+        player = new Player("Assets/Character/spider.png",25,12);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
-        bat[0] = new Bat (30 * 32, 49 * 32, 0);
-        bat[1] = new Bat (32 * 32, 51 * 32, 0);
-        bat[2] = new Bat (35 * 32, 56 * 32, 0);
-        trap[0] = new Trap (19 * 32, 33 * 32, 1);
-        trap[1] = new Trap (17 * 32, 33 * 32, 2);
-        trap[2] = new Trap (18 * 32, 34 * 32, 3);
-        trap[3] = new Trap (18 * 32, 32 * 32, 4);
-        trap[4] = new Trap (20 * 32, 39 * 32, 1);
-        trap[5] = new Trap (20 * 32, 40 * 32, 1);
-        trap[6] = new Trap (20 * 32, 41 * 32, 1);
-        trap[7] = new Trap (21 * 32, 42 * 32, 4);
-        trap[8] = new Trap (22 * 32, 42 * 32, 4);
-        trap[9] = new Trap (23 * 32, 42 * 32, 4);
+        bat[0] = new Bat (30,49,0);
+        bat[1] = new Bat (32,51,0);
+        bat[2] = new Bat (35,56,0);
+        trap[0] = new Trap (19,33,1);
+        trap[1] = new Trap (17,33,2);
+        trap[2] = new Trap (18,34,3);
+        trap[3] = new Trap (18,32,4);
+        trap[4] = new Trap (20,39,1);
+        trap[5] = new Trap (20,40,1);
+        trap[6] = new Trap (20,41,1);
+        trap[7] = new Trap (21,42,4);
+        trap[8] = new Trap (22,42,4);
+        trap[9] = new Trap (23,42,4);
         break;
     case LEVEL2:
+        Mix_FadeOutMusic(500);
+        currentLevel = 2;
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/spider.png",34,65); // 42 97
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        bat[0] = new Bat (32,96,1);
+        bat[1] = new Bat (28,94,1);
+        bat[2] = new Bat (30,88,1);
+        bat[3] = new Bat (40,88,0);
+        bat[4] = new Bat (38,83,0);
+        bat[5] = new Bat (42,71,1);
+        bat[6] = new Bat (39,73,1);
+        bat[7] = new Bat (31,66,1);
+        bat[8] = new Bat (37,52,1);
+        bat[9] = new Bat (42,56,1);
+        bat[10] = new Bat (45,61,1);
+        bat[11] = new Bat (35,45,1);
+        bat[12] = new Bat (22,41,0);
+        bat[13] = new Bat (22,39,0);
+        bat[14] = new Bat (17,30,0);
+        bat[15] = new Bat (17,22,0);
+        bat[16] = new Bat (20,21,0);
+        bat[17] = new Bat (17,20,0);
+        bat[18] = new Bat (34,12,0);
+        bat[19] = new Bat (22,12,1);
+        trap[0] = new Trap (34,93,4);
+        trap[1] = new Trap (28,89,1);
+        trap[2] = new Trap (28,90,1);
+        trap[3] = new Trap (42,78,4);
+        trap[4] = new Trap (43,78,4);
+        trap[5] = new Trap (43,75,2);
+        trap[6] = new Trap (43,76,2);
+        trap[7] = new Trap (44,77,3);
+        trap[8] = new Trap (29,77,1);
+        trap[9] = new Trap (27,77,2);
+        trap[10] = new Trap (28,64,3);
+        trap[11] = new Trap (29,64,3);
+        trap[12] = new Trap (30,64,3);
+        trap[13] = new Trap (31,64,3);
+        trap[14] = new Trap (38,54,4);
+        trap[15] = new Trap (39,54,4);
+        trap[16] = new Trap (38,56,3);
+        trap[17] = new Trap (39,56,3);
+        trap[18] = new Trap (37,62,1);
+        trap[19] = new Trap (37,63,1);
+        trap[20] = new Trap (38,63,4);
+        trap[21] = new Trap (39,63,4);
+        trap[22] = new Trap (42,63,4);
+        trap[23] = new Trap (49,54,1);
+        trap[24] = new Trap (47,54,2);
+        trap[25] = new Trap (48,55,3);
+        trap[26] = new Trap (37,54,4);
+        trap[27] = new Trap (43,49,1);
+        trap[28] = new Trap (43,48,1);
+        trap[29] = new Trap (43,47,1);
+        trap[30] = new Trap (43,46,1);
+        trap[31] = new Trap (44,45,4);
+        trap[32] = new Trap (45,46,1);
+        trap[33] = new Trap (45,47,1);
+        trap[34] = new Trap (48,42,1);
+        trap[35] = new Trap (47,43,3);
+        trap[36] = new Trap (46,42,2);
+        trap[37] = new Trap (47,41,4);
+        trap[38] = new Trap (28,43,1);
+        trap[39] = new Trap (26,43,2);
+        trap[40] = new Trap (27,42,4);
+        trap[41] = new Trap (25,25,2);
+        trap[42] = new Trap (25,26,2);
+        trap[43] = new Trap (25,17,3);
+        trap[44] = new Trap (26,17,3);
+        trap[45] = new Trap (27,17,3);
+        trap[46] = new Trap (30,16,1);
+        trap[47] = new Trap (30,11,3);
+        trap[48] = new Trap (29,11,3);
+        trap[49] = new Trap (28,11,3);
+        trap[50] = new Trap (25,11,1);
+        trap[51] = new Trap (22,11,2);
+        trap[52] = new Trap (23,12,3);
+        trap[53] = new Trap (24,12,3);
+        trap[54] = new Trap (23,10,4);
+        trap[55] = new Trap (24,10,4);
+        trap[56] = new Trap (28,76,4);
+        trap[57] = new Trap (27,64,3);
+        trap[58] = new Trap (43,63,4);
         break;
     case LEVEL3:
         break;
@@ -301,12 +395,33 @@ void Game::exitState(State id){
         break;
     case LEVEL1:
         Mix_FadeInMusic(gMusic,-1,500);
+//        delete map;
         map = nullptr;
+//        delete player;
         player = nullptr;
-        for (int i = 0; i < 3; i++) bat[i] = nullptr;
-        for (int i = 0; i < 10; i++) trap[i] = nullptr;
+        for (int i = 0; i < 3; i++)
+        {
+//            delete bat[i];
+            bat[i] = nullptr;
+        }
+        for (int i = 0; i < 10; i++)
+        {
+//            delete trap[i];
+            trap[i] = nullptr;
+        }
         break;
     case LEVEL2:
+        Mix_FadeInMusic(gMusic,-1,500);
+        map = nullptr;
+        player = nullptr;
+        for (int i = 0; i < 20; i++)
+        {
+            bat[i] = nullptr;
+        }
+        for (int i = 0; i < 59; i++)
+        {
+            trap[i] = nullptr;
+        }
         break;
     case LEVEL3:
         break;
@@ -343,7 +458,7 @@ void Game::updateGame(int x){
             {
                 if(trap[i]->activated)
                 {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 500)
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 300)
                     {
                         isLose = true;
                         break;
@@ -358,6 +473,39 @@ void Game::updateGame(int x){
         }
         break;
     case LEVEL2:
+                player->Update(camera, player->xpos, player->ypos);
+        if(!x)
+        {
+            for (int i = 0; i < 20; i++) bat[i]->Update(map);
+            for (int i = 0; i < 59; i++) trap[i]->Update();
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if(player->Collision(bat[i]->hitbox))
+            {
+                isLose = true;
+                break;
+            }
+        }
+        for(int i = 0; i < 59; i++)
+        {
+            if(player->Collision(trap[i]->hitbox))
+            {
+                if(trap[i]->activated)
+                {
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 300)
+                    {
+                        isLose = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    trap[i]->activatedTime = SDL_GetTicks();
+                    trap[i]->activated = true;
+                }
+            }
+        }
         break;
     case LEVEL3:
         break;

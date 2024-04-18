@@ -7,6 +7,8 @@
 
 Bomb::Bomb(int x, int y, int type)
 {
+    x *= 32;
+    y *= 32;
     bombTexture = TextureManager::LoadTexture("Assets/Object/bomb.png");
     xBomb = x; yBomb = y; typeBomb = type; xStart = x; yStart = y;
     hitbox.x = x; hitbox.y = y; hitbox.w = 16; hitbox.h = 16;
