@@ -15,9 +15,12 @@ void Map::LoadMap(int level)
     std::string filename = "Assets/Map/level" + std::to_string(level) + ".txt";
     std::ifstream file(filename);
     int width, height;
-    if (level == 1) {width = 45; height = 48;}
+    if (level == 1) {width = 53; height = 73;}
     if (level == 2) {width = 67; height = 54;}
     if (level == 3) {width = 50; height = 50;}
+    if (level == 4) {width = 50; height = 50;}
+    if (level == 5) {width = 50; height = 50;}
+    if (level == 6) {width = 50; height = 50;}
     curr_map.resize(height, std::vector<int>(width));
     for (int i = 0; i < height; i++)
     {

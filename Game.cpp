@@ -15,11 +15,11 @@ Mix_Music* gMusic = NULL;
 Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
 Map* map;
-Bat* bat;
+Player* player;
+Bat* bat[3];
 Bomb* bomb;
 Peak* peak;
-Trap* trap;
-Player* player;
+Trap* trap[10];
 SDL_Rect camera;
 
 void Game::handleEvent(){
@@ -198,23 +198,32 @@ void Game::renderGame(){
     case LEVEL1:
         map->DrawMap(camera);
         player->Render();
+        for (int i = 0; i < 10; i++)
+        {
+            trap[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            bat[i]->Render(player->xpos, player->ypos);
+        }
         break;
     case LEVEL2:
-        map->DrawMap(camera);
-        player->Render();
-        bat->Render(player->xpos, player->ypos);
         break;
     case LEVEL3:
-        map->DrawMap(camera);
-        player->Render();
-        bat->Render(player->xpos, player->ypos);
-        bomb->Render(player->xpos, player->ypos);
-        peak->Render(player->xpos, player->ypos);
-        trap->Render(player->xpos, player->ypos);
+        break;
+    case LEVEL4:
+        break;
+    case LEVEL5:
         break;
     default:
         break;
     }
+//        map->DrawMap(camera);
+//        player->Render();
+//        bat->Render(player->xpos, player->ypos);
+//        bomb->Render(player->xpos, player->ypos);
+//        peak->Render(player->xpos, player->ypos);
+//        trap->Render(player->xpos, player->ypos);
     SDL_RenderPresent(gRenderer);
 }
 void Game::enterState(State id){
@@ -246,28 +255,31 @@ void Game::enterState(State id){
     case LEVEL1:
         Mix_FadeOutMusic(500);
         currentLevel = 1;
-        player = new Player("Assets/Character/spider.png",26 * 32 ,37 * 32);
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/spider.png",25 * 32, 12 * 32);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
-        map = new Map(1);
+        bat[0] = new Bat (30 * 32, 49 * 32, 0);
+        bat[1] = new Bat (32 * 32, 51 * 32, 0);
+        bat[2] = new Bat (35 * 32, 56 * 32, 0);
+        trap[0] = new Trap (19 * 32, 33 * 32, 1);
+        trap[1] = new Trap (17 * 32, 33 * 32, 2);
+        trap[2] = new Trap (18 * 32, 34 * 32, 3);
+        trap[3] = new Trap (18 * 32, 32 * 32, 4);
+        trap[4] = new Trap (20 * 32, 39 * 32, 1);
+        trap[5] = new Trap (20 * 32, 40 * 32, 1);
+        trap[6] = new Trap (20 * 32, 41 * 32, 1);
+        trap[7] = new Trap (21 * 32, 42 * 32, 4);
+        trap[8] = new Trap (22 * 32, 42 * 32, 4);
+        trap[9] = new Trap (23 * 32, 42 * 32, 4);
         break;
     case LEVEL2:
-        Mix_FadeOutMusic(500);
-        currentLevel = 2;
-        player = new Player("Assets/Character/spider.png",48 * 32 ,10 * 32);
-        camera = {player->xpos-480, player->ypos-320, 992, 672};
-        map = new Map(2);
-        bat = new Bat(48*32, 10*32, 0);
         break;
     case LEVEL3:
-        Mix_FadeOutMusic(500);
-        currentLevel = 3;
-        player = new Player("Assets/Character/spider.png",19 * 32 ,39 * 32);
-        camera = {player->xpos-480, player->ypos-320, 992, 672};
-        map = new Map(3);
-        bat = new Bat(19 * 32, 37 * 32, 0);
-        bomb = new Bomb(20 * 32, 28 * 32, 1);
-        peak = new Peak(17 * 32, 30 * 32);
-        trap = new Trap(30 * 32, 39 * 32, 4);
+        break;
+    case LEVEL4:
+        break;
+    case LEVEL5:
+        break;
     default:
         break;
     }
@@ -277,18 +289,31 @@ void Game::exitState(State id){
     {
     case MENU:
     case SELECTMAP:
-        SDL_DestroyTexture(background); delete text; break;
+        SDL_DestroyTexture(background);
+        delete text;
+        break;
     case GUIDE:
     case WIN:
     case LOSE:
     case SETTING:
-        SDL_DestroyTexture(background); background = nullptr; break;
+        SDL_DestroyTexture(background);
+        background = nullptr;
+        break;
     case LEVEL1:
-        Mix_FadeInMusic(gMusic,-1,500); map = nullptr; player = nullptr; break;
+        Mix_FadeInMusic(gMusic,-1,500);
+        map = nullptr;
+        player = nullptr;
+        for (int i = 0; i < 3; i++) bat[i] = nullptr;
+        for (int i = 0; i < 10; i++) trap[i] = nullptr;
+        break;
     case LEVEL2:
-        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; break;
+        break;
     case LEVEL3:
-        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; peak = nullptr; trap = nullptr; break;
+        break;
+    case LEVEL4:
+        break;
+    case LEVEL5:
+        break;
     default:
         break;
     }
@@ -299,13 +324,52 @@ void Game::updateGame(int x){
     {
     case LEVEL1:
         player->Update(camera, player->xpos, player->ypos);
+        if(!x)
+        {
+            for (int i = 0; i < 3; i++) bat[i]->Update(map);
+            for (int i = 0; i < 10; i++) trap[i]->Update();
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            if(player->Collision(bat[i]->hitbox))
+            {
+                isLose = true;
+                break;
+            }
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            if(player->Collision(trap[i]->hitbox))
+            {
+                if(trap[i]->activated)
+                {
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 500)
+                    {
+                        isLose = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    trap[i]->activatedTime = SDL_GetTicks();
+                    trap[i]->activated = true;
+                }
+            }
+        }
         break;
     case LEVEL2:
-        player->Update(camera, player->xpos, player->ypos);
-        bat->Update(map);
         break;
     case LEVEL3:
-        player->Update(camera, player->xpos, player->ypos);
+        break;
+    case LEVEL4:
+        break;
+    case LEVEL5:
+        break;
+    default:
+        break;
+    }
+    /*
+    player->Update(camera, player->xpos, player->ypos);
         if(!x)
         {
             bat->Update(map);
@@ -328,13 +392,102 @@ void Game::updateGame(int x){
                 trap->activated = true;
             }
         }
-        break;
-    default:
-        break;
-    }
+    */
     if(isLose) {switchState(LOSE); isLose = false;}
     if(isWin) {switchState(WIN); isWin = false;}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

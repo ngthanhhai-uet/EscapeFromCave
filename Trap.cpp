@@ -29,7 +29,7 @@ void Trap::Render(int x, int y)
     else
     {
         if(typeTrap == 1) SDL_RenderCopyEx(Game::gRenderer, trapoff, nullptr, &temp, 90 ,nullptr, flip);
-        if(typeTrap == 2) SDL_RenderCopyEx(Game::gRenderer, trapoff, nullptr, &temp, 2700 ,nullptr, flip);
+        if(typeTrap == 2) SDL_RenderCopyEx(Game::gRenderer, trapoff, nullptr, &temp, 270 ,nullptr, flip);
         if(typeTrap == 3) SDL_RenderCopyEx(Game::gRenderer, trapoff, nullptr, &temp, 180 ,nullptr, flip);
         if(typeTrap == 4) SDL_RenderCopyEx(Game::gRenderer, trapoff, nullptr, &temp, 0 ,nullptr, flip);
     }
