@@ -11,10 +11,10 @@ Based on Tomb Of The Mask, inspired by a classic, using SDL2.0 and written in C+
 + SDL2.0: https://www.libsdl.org
 + ChatGPT4: https://chat.openai.com/
 ### *Graphics*: 
-+ Interface and entities: https://itch.io
-+ Background: My own design
++ Interface and entities: https://itch.io/
++ Background: My own design: https://www.canva.com/
 ### *Sounds:*
-+ Some soundtracks on youtube
++ Some soundtracks: https://www.youtube.com/
 ## HOW TO OPEN
 
 ## HOW TO PLAY
