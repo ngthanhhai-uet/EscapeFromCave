@@ -4,16 +4,19 @@
 #include "TextureManager.hpp"
 #include "Player.hpp"
 #include "Bomb.hpp"
+#include "Peak.hpp"
 #include "TextManager.hpp"
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
 SDL_Texture* background;
 Mix_Music* gMusic = NULL;
+Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
 Map* map;
 Bat* bat;
 Bomb* bomb;
+Peak* peak;
 Player* player;
 SDL_Rect camera;
 
@@ -204,6 +207,7 @@ void Game::renderGame(){
         player->Render();
         bat->Render(player->xpos, player->ypos);
         bomb->Render(player->xpos, player->ypos);
+        peak->Render(player->xpos, player->ypos);
         break;
     default:
         break;
@@ -259,6 +263,7 @@ void Game::enterState(State id){
         map = new Map(3);
         bat = new Bat(19 * 32, 37 * 32, 0);
         bomb = new Bomb(20 * 32, 28 * 32, 1);
+        peak = new Peak(17 * 32, 30 * 32);
     default:
         break;
     }
@@ -279,7 +284,7 @@ void Game::exitState(State id){
     case LEVEL2:
         Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; break;
     case LEVEL3:
-        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; break;
+        Mix_FadeInMusic(gMusic,-1,500); bat = nullptr; player = nullptr; map = nullptr; peak = nullptr; break;
     default:
         break;
     }
@@ -297,10 +302,15 @@ void Game::updateGame(int x){
         break;
     case LEVEL3:
         player->Update(camera, player->xpos, player->ypos);
-        if(x == 0) bat->Update(map);
-        if(x == 0) bomb->Update(map);
+        if(!x)
+        {
+            bat->Update(map);
+            bomb->Update(map);
+            peak->Update();
+        }
         if(player->Collision(bat->hitbox)) isLose = true;
         if(player->Collision(bomb->hitbox)) isLose = true;
+        if(peak->isExpand && player->Collision(peak->hitbox)) isLose = true;
         break;
     default:
         break;
@@ -311,26 +321,6 @@ void Game::updateGame(int x){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//bool Game::isCollision(SDL_Rect a, SDL_Rect b)
-//{
-//    int left = a.x > b.x ? a.x : b.x;
-//    int right = a.x + a.w < b.x + b.w ? a.x + a.w : b.x + b.w;
-//    int top = a.y > b.y ? a.y : b.y;
-//    int bot = a.y + a.h < b.y + b.h ? a.y + a.h : b.y + b.h;
-//    return (left >= right || top >= bot);
-//}
 bool Game::isInside(int x, int y,int x1, int x2, int y1, int y2)
 {
     return (x1 <= x && x <= x2 && y1 <= y && y <= y2);
@@ -351,6 +341,7 @@ void Game::initGame()
     gWindow = SDL_CreateWindow("Escape From Cave",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 992, 672, 0);
     Mix_OpenAudio( 30000, MIX_DEFAULT_FORMAT, 2, 2048 );
     gMusic = Mix_LoadMUS("Assets/Sound/music.mp3");
+    gChunk1 = Mix_LoadWAV("Assets/Sound/chunk1.wav");
     Mix_PlayMusic(gMusic,-1);
     gRenderer = SDL_CreateRenderer(gWindow,-1,0);
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
@@ -364,6 +355,7 @@ void Game::closeGame()
 	gWindow = NULL;
 	Mix_FreeMusic(gMusic);
 	gMusic = NULL;
+	Mix_FreeChunk(gChunk1);
 	Mix_Quit();
 	IMG_Quit();
 	TTF_Quit();

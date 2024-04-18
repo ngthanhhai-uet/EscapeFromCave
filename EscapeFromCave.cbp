@@ -57,6 +57,12 @@
 		<Unit filename="Map.hpp">
 			<Option virtualFolder="Object/" />
 		</Unit>
+		<Unit filename="Peak.cpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
+		<Unit filename="Peak.hpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
 		<Unit filename="Player.cpp">
 			<Option virtualFolder="Object/" />
 		</Unit>
@@ -74,6 +80,9 @@
 		</Unit>
 		<Unit filename="TextureManager.hpp">
 			<Option virtualFolder="Manager/" />
+		</Unit>
+		<Unit filename="Trap.hpp">
+			<Option virtualFolder="Object/" />
 		</Unit>
 		<Unit filename="main.cpp">
 			<Option virtualFolder="Main/" />
