@@ -5,15 +5,17 @@
 + This is an assignment from Advanced Programming - INT2215
 ## IDEA:
 Based on viewmodel of Pacman & gameplay of GeometryDash, using SDL2.0 and written in C++
-## HOW TO SETUP:
+## SETUP:
 + Clone this repository to your PC
 + Setup CodeBlock with SDL2 on your PC
 + Open EscapeFromCave.cbp file in repository's folder
 + Press F9 or click Build & Run
-## HOW TO PLAY:
+## PREVIEW:
 + Use ARROW KEY on your keyboard to move character around the map
-## PREVIEW: 
-+ Video: 
+## DEMO:
++ Video:
+## SELF ASSESSMENT
+9 - 9.5
 ## REFERENCE:
 ### *Guide*:
 + Lazyfoo: https://lazyfoo.net/tutorials/SDL/index.php
