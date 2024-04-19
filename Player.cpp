@@ -26,11 +26,6 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
         flip = SDL_FLIP_NONE; degrees = +90;
         while(1)
         {
-            if(game->currentLevel == 4)
-            {
-                if(xpos == 30 * 32 && ypos == 43 * 32) {xpos = 31 * 32; ypos = 46 * 32;}
-                if(xpos == 31 * 32 && ypos == 46 * 32) {xpos = 30 * 32; ypos = 43 * 32;}
-            }
             int type = map->curr_map[ypos/32+1][xpos/32];
             if(type == 118) { game->isWin = true; break; }
             if(type == 124 || type == 130 || type == 131) { game->isLose = true; break;}
@@ -53,7 +48,20 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
     case SDLK_UP:
         flip = SDL_FLIP_NONE; degrees = -90;
         while(1)
-        {
+        { // 37 25
+            if(game->currentLevel == 5)
+            {
+                if(xpos == 22 * 32 && ypos == 22 * 32)
+                {
+                    xpos = 37 * 32;
+                    ypos = 25 * 32;
+                }
+                if(xpos == 37 * 32 && ypos == 25 * 32)
+                {
+                    xpos = 22 * 32;
+                    ypos = 22 * 32;
+                }
+            }
             int type = map->curr_map[(ypos-1)/32][xpos/32];
             if(type == 118) { game->isWin = true; break; }
             if (type == 127 || type == 126 || type == 129){ game->isLose = true; break;}
