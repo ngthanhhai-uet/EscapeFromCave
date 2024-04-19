@@ -15,7 +15,7 @@ Based on viewmodel of Pacman & gameplay of GeometryDash, using SDL2.0 and writte
 ## DEMO:
 + Video:
 ## SELF ASSESSMENT
-9 - 9.5
+
 ## REFERENCE:
 ### *Guide*:
 + Lazyfoo: https://lazyfoo.net/tutorials/SDL/index.php
