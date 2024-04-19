@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
+#include <fstream>
 class Game
 {
 private:
@@ -19,7 +20,7 @@ public:
     void renderGame();
     void closeGame();
     bool isRunning;
-    bool isEnglish = true;
+    bool isEnglish;
     bool isLose = false;
     bool isWin = false;
     bool changeState;
@@ -36,14 +37,18 @@ public:
         LEVEL4,
         LEVEL5,
         LEVEL6,
+        LEVEL7,
+        LEVEL8,
+        LEVEL9,
         LOSE,
         WIN,
+        PAUSE,
     };
     State gState = MENU;
     void enterState(State id);
     void exitState(State id);
     void switchState(State id);
-    int maxLevel = 3;
+    int maxLevel;
     int currentLevel = 1;
     SDL_Window* gWindow;
     static SDL_Renderer* gRenderer;

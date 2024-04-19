@@ -7,6 +7,7 @@
 #include "Peak.hpp"
 #include "Trap.hpp"
 #include "TextManager.hpp"
+
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
@@ -18,8 +19,8 @@ Map* map;
 Player* player;
 Bat* bat[20];
 Bomb* bomb[14];
-Peak* peak;
-Trap* trap[59];
+Peak* peak[7];
+Trap* trap[65];
 SDL_Rect camera;
 
 void Game::handleEvent(){
@@ -32,6 +33,8 @@ void Game::handleEvent(){
     case LEVEL1:
     case LEVEL2:
     case LEVEL3:
+    case LEVEL4:
+    case LEVEL5:
         if(gEvent.type == SDL_KEYDOWN) player->Handle(gEvent, this, map);
         break;
     case GUIDE:
@@ -59,6 +62,9 @@ void Game::handleEvent(){
                 else if(currentLevel == 4) switchState(LEVEL4);
                 else if(currentLevel == 5) switchState(LEVEL5);
                 else if(currentLevel == 6) switchState(LEVEL6);
+                else if(currentLevel == 7) switchState(LEVEL7);
+                else if(currentLevel == 8) switchState(LEVEL8);
+                else if(currentLevel == 9) switchState(LEVEL9);
             }
             break;
         default:
@@ -95,24 +101,6 @@ void Game::handleEvent(){
             if(isInside(x,y,353,639,401,489)) switchState(SETTING);
             if(isInside(x,y,353,639,514,603)) isRunning = false;
             break;
-//        case SDL_MOUSEMOTION:
-//            SDL_GetMouseState(&x,&y);
-//            if(isInside(x,y,353,639,288,377))
-//            {
-//                text->Render("PLAY",496,336,1);
-//                SDL_RenderPresent(gRenderer);
-//            }
-//            if(isInside(x,y,353,639,401,489))
-//            {
-//                text->Render("SETTING",496,447,1);
-//                SDL_RenderPresent(gRenderer);
-//            }
-//            if(isInside(x,y,353,639,514,603))
-//            {
-//                text->Render("QUIT",496,558,1);
-//                SDL_RenderPresent(gRenderer);
-//            }
-            break;
         default:
             break;
         }
@@ -122,14 +110,17 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,295,396,186,299)) switchState(LEVEL1);
-            if(isInside(x,y,445,546,186,299) && maxLevel >= 2) switchState(LEVEL2);
-            if(isInside(x,y,595,696,186,299) && maxLevel >= 3) switchState(LEVEL3);
-            if(isInside(x,y,295,396,347,460) && maxLevel >= 4) switchState(LEVEL4);
-            if(isInside(x,y,445,546,347,460) && maxLevel >= 5) switchState(LEVEL5);
-            if(isInside(x,y,595,696,347,460) && maxLevel >= 6) switchState(LEVEL6);
-            if(isInside(x,y,913,970,21,76)) switchState(MENU);
-            if(isInside(x,y,560,890,568,600)) switchState(GUIDE);
+            if(isInside(x,y,337,426,181,289))switchState(LEVEL1);
+            if(isInside(x,y,450,538,181,279) && maxLevel >= 2) switchState(LEVEL2);
+            if(isInside(x,y,562,651,181,279) && maxLevel >= 3) switchState(LEVEL3);
+            if(isInside(x,y,382,371,290,388) && maxLevel >= 4) switchState(LEVEL4);
+            if(isInside(x,y,395,483,290,388) && maxLevel >= 5) switchState(LEVEL5);
+            if(isInside(x,y,508,596,290,388) && maxLevel >= 6) switchState(LEVEL6);
+            if(isInside(x,y,621,709,290,388) && maxLevel >= 7) switchState(LEVEL7);
+            if(isInside(x,y,337,426,390,490) && maxLevel >= 8) switchState(LEVEL8);
+            if(isInside(x,y,450,538,390,490) && maxLevel >= 9) switchState(LEVEL9);
+            if(isInside(x,y,914,969,20,76)) switchState(MENU);
+            if(isInside(x,y,717,925,553,591)) switchState(GUIDE);
             break;
         default:
             break;
@@ -166,29 +157,7 @@ void Game::renderGame(){
     switch(gState)
     {
     case MENU:
-        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
-        if(isEnglish == true)
-        {
-            text->Render("PLAY", 496, 335, 0); text->Render("SETTING", 496, 450, 0); text->Render("QUIT", 496, 560, 0);
-        }
-        else
-        {
-            text->Render("CHOI", 496, 335, 0); text->Render("CAI DAT", 496, 450, 0); text->Render("THOAT", 496, 560, 0);
-        }
-        break;
     case SELECTMAP:
-        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
-        if(isEnglish == true)
-        {
-            text->Render("LEADERBOARD", 200, 580, 0); text->Render("STORE", 500, 580, 0); text->Render("HOW TO PLAY", 800, 580, 0);
-            text->Render("I",347,245,0); text->Render("II",497,245,0); text->Render("III",647,245,0);
-            text->Render("IV",347,405,0); text->Render("V",496,406,0); text->Render("VI",645,405,0);
-        }
-        else
-        {
-            text->Render("DIEM CAO", 200, 580, 0); text->Render("CUA HANG", 505, 580, 0); text->Render("HUONG DAN", 800, 580, 0);
-        }
-        break;
     case GUIDE:
     case WIN:
     case LOSE:
@@ -225,18 +194,18 @@ void Game::renderGame(){
         for (int i = 0; i < 14; i++) bomb[i]->Render(player->xpos, player->ypos);
         break;
     case LEVEL4:
+        map->DrawMap(camera);
+        player->Render();
+        for (int i = 0; i < 4; i++) bomb[i]->Render(player->xpos, player->ypos);
+        for (int i = 0; i < 7; i++) peak[i]->Render(player->xpos, player->ypos);
+        for (int i = 0; i < 2; i++) bat[i]->Render(player->xpos, player->ypos);
+        for (int i = 0; i < 63; i++) trap[i]->Render(player->xpos, player->ypos);
         break;
     case LEVEL5:
         break;
     default:
         break;
     }
-//        map->DrawMap(camera);
-//        player->Render();
-//        bat->Render(player->xpos, player->ypos);
-//        bomb->Render(player->xpos, player->ypos);
-//        peak->Render(player->xpos, player->ypos);
-//        trap->Render(player->xpos, player->ypos);
     SDL_RenderPresent(gRenderer);
 }
 void Game::enterState(State id){
@@ -249,13 +218,12 @@ void Game::enterState(State id){
         background = TextureManager::LoadTexture("Assets/State/win.png");
         break;
     case MENU:
-        background = TextureManager::LoadTexture("Assets/State/menu.png");
-        text = new TextManager(35);
+        if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/menu_en.png");
+        else background = TextureManager::LoadTexture("Assets/State/menu_vn.png");
         break;
     case SELECTMAP:
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/selectmap_en.png");
         else background = TextureManager::LoadTexture("Assets/State/selectmap_vn.png");
-        text = new TextManager(35);
         break;
     case SETTING:
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/setting_en.png");
@@ -375,7 +343,7 @@ void Game::enterState(State id){
         Mix_FadeOutMusic(500);
         currentLevel = 3;
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/spider.png",30,33); // 52 60
+        player = new Player("Assets/Character/spider.png",52,60);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         bomb[0] = new Bomb (54,23,2);
         bomb[1] = new Bomb (53,15,3);
@@ -393,6 +361,87 @@ void Game::enterState(State id){
         bomb[13] = new Bomb (34,12,3);
         break;
     case LEVEL4:
+        Mix_FadeOutMusic(500);
+        currentLevel = 4;
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/spider.png",50,12);
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        bat[0] = new Bat (15,68,1);
+        bat[1] = new Bat (18,72,0);
+        bomb[0] = new Bomb (25,62,1);
+        bomb[1] = new Bomb (32,55,2);
+        bomb[2] = new Bomb (36,60,1);
+        bomb[3] = new Bomb (42,64,4);
+        peak[0] = new Peak (50,17);
+        peak[1] = new Peak (43,24);
+        peak[2] = new Peak (50,28);
+        peak[3] = new Peak (38,28);
+        peak[4] = new Peak (33,21);
+        peak[5] = new Peak (22,34);
+        peak[6] = new Peak (44,21);
+        trap[0] = new Trap (62,21,1);
+        trap[1] = new Trap (60,21,2);
+        trap[2] = new Trap (61,22,3);
+        trap[3] = new Trap (61,20,4);
+        trap[4] = new Trap (57,19,1);
+        trap[5] = new Trap (22,19,2);
+        trap[6] = new Trap (56,20,3);
+        trap[7] = new Trap (56,18,4);
+        trap[8] = new Trap (54,31,1);
+        trap[9] = new Trap (52,31,2);
+        trap[10] = new Trap (53,32,3);
+        trap[11] = new Trap (53,30,4);
+        trap[12] = new Trap (26,19,1);
+        trap[13] = new Trap (26,20,1);
+        trap[14] = new Trap (24,19,2);
+        trap[15] = new Trap (24,20,2);
+        trap[16] = new Trap (25,18,4);
+        trap[17] = new Trap (25,21,3);
+        trap[18] = new Trap (27,26,3);
+        trap[19] = new Trap (28,26,3);
+        trap[20] = new Trap (29,26,3);
+        trap[21] = new Trap (30,26,3);
+        trap[22] = new Trap (21,26,1);
+        trap[23] = new Trap (21,27,1);
+        trap[24] = new Trap (21,28,1);
+        trap[25] = new Trap (21,29,1);
+        trap[26] = new Trap (21,30,1);
+        trap[27] = new Trap (22,30,4);
+        trap[28] = new Trap (23,30,4);
+        trap[29] = new Trap (24,30,4);
+        trap[30] = new Trap (25,30,4);
+        trap[31] = new Trap (26,30,4);
+        trap[32] = new Trap (27,30,4);
+        trap[33] = new Trap (22,32,3);
+        trap[34] = new Trap (24,32,3);
+        trap[35] = new Trap (25,32,3);
+        trap[36] = new Trap (26,32,3);
+        trap[37] = new Trap (27,32,3);
+        trap[38] = new Trap (31,32,4);
+        trap[39] = new Trap (30,32,4);
+        trap[40] = new Trap (29,33,2);
+        trap[41] = new Trap (30,34,3);
+        trap[42] = new Trap (31,34,3);
+        trap[43] = new Trap (22,36,4);
+        trap[44] = new Trap (23,36,4);
+        trap[45] = new Trap (24,36,4);
+        trap[46] = new Trap (25,36,4);
+        trap[47] = new Trap (26,36,4);
+        trap[48] = new Trap (24,46,4);
+        trap[49] = new Trap (25,46,4);
+        trap[50] = new Trap (26,46,4);
+        trap[51] = new Trap (27,46,4);
+        trap[52] = new Trap (28,46,4);
+        trap[53] = new Trap (29,46,4);
+        trap[54] = new Trap (25,51,4);
+        trap[55] = new Trap (26,51,4);
+        trap[56] = new Trap (27,51,4);
+        trap[57] = new Trap (28,51,4);
+        trap[58] = new Trap (29,51,4);
+        trap[59] = new Trap (32,51,4);
+        trap[60] = new Trap (33,51,4);
+        trap[61] = new Trap (34,52,1);
+        trap[62] = new Trap (55,19,2);
         break;
     case LEVEL5:
         break;
@@ -405,9 +454,6 @@ void Game::exitState(State id){
     {
     case MENU:
     case SELECTMAP:
-        SDL_DestroyTexture(background);
-        delete text;
-        break;
     case GUIDE:
     case WIN:
     case LOSE:
@@ -417,20 +463,10 @@ void Game::exitState(State id){
         break;
     case LEVEL1:
         Mix_FadeInMusic(gMusic,-1,500);
-//        delete map;
         map = nullptr;
-//        delete player;
         player = nullptr;
-        for (int i = 0; i < 3; i++)
-        {
-//            delete bat[i];
-            bat[i] = nullptr;
-        }
-        for (int i = 0; i < 10; i++)
-        {
-//            delete trap[i];
-            trap[i] = nullptr;
-        }
+        for (int i = 0; i < 3; i++) bat[i] = nullptr;
+        for (int i = 0; i < 10; i++) trap[i] = nullptr;
         break;
     case LEVEL2:
         Mix_FadeInMusic(gMusic,-1,500);
@@ -446,6 +482,14 @@ void Game::exitState(State id){
         for (int i = 0; i < 14; i++) bomb[i] = nullptr;
         break;
     case LEVEL4:
+        Mix_FadeInMusic(gMusic,-1,500);
+        map = nullptr;
+        player = nullptr;
+        for (int i = 0; i < 4; i++) bomb[i] = nullptr;
+        for (int i = 0; i < 7; i++) peak[i] = nullptr;
+        for (int i = 0; i < 2; i++) bat[i] = nullptr;
+        for (int i = 0; i < 63; i++) trap[i] = nullptr;
+        break;
         break;
     case LEVEL5:
         break;
@@ -478,7 +522,7 @@ void Game::updateGame(int x){
             {
                 if(trap[i]->activated)
                 {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 300)
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
                     {
                         isLose = true;
                         break;
@@ -513,7 +557,7 @@ void Game::updateGame(int x){
             {
                 if(trap[i]->activated)
                 {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 300)
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
                     {
                         isLose = true;
                         break;
@@ -543,6 +587,55 @@ void Game::updateGame(int x){
         }
         break;
     case LEVEL4:
+        player->Update(camera, player->xpos, player->ypos);
+        if(!x)
+        {
+            for (int i = 0; i < 2; i++) bat[i]->Update(map);
+            for (int i = 0; i < 63; i++) trap[i]->Update();
+            for (int i = 0; i < 7; i++) peak[i]->Update();
+            for (int i = 0; i < 4; i++) bomb[i]->Update(map);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            if(player->Collision(bat[i]->hitbox))
+            {
+                isLose = true;
+                break;
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if(player->Collision(bomb[i]->hitbox))
+            {
+//                isLose = true;
+                break;
+            }
+        }
+        for(int i = 0; i < 63; i++)
+        {
+            if(player->Collision(trap[i]->hitbox))
+            {
+                if(trap[i]->activated)
+                {
+                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
+                    isLose = true;
+                    break;
+                }
+                else
+                {
+                    trap[i]->activatedTime = SDL_GetTicks();
+                    trap[i]->activated = true;
+                }
+            }
+        }
+        for (int i = 0; i < 7; i++)
+        {
+            if(player->Collision(peak[i]->hitbox) && peak[i]->activated)
+            {
+                isLose = true;
+                break;
+            }
+        }
         break;
     case LEVEL5:
         break;
@@ -696,10 +789,18 @@ void Game::initGame()
     Mix_PlayMusic(gMusic,-1);
     gRenderer = SDL_CreateRenderer(gWindow,-1,0);
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
+    std::ifstream file("Assets/savegame.txt");
+    file >> isEnglish;
+    file >> maxLevel;
+    file.close();
     enterState(gState);
 }
 void Game::closeGame()
 {
+    std::ofstream file("Assets/savegame.txt");
+    file << isEnglish;
+    file << maxLevel;
+    file.close();
 	SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;
 	SDL_DestroyWindow(gWindow);
