@@ -17,7 +17,7 @@ TextManager* text;
 Map* map;
 Player* player;
 Bat* bat[20];
-Bomb* bomb;
+Bomb* bomb[14];
 Peak* peak;
 Trap* trap[59];
 SDL_Rect camera;
@@ -220,6 +220,9 @@ void Game::renderGame(){
         }
         break;
     case LEVEL3:
+        map->DrawMap(camera);
+        player->Render();
+        for (int i = 0; i < 14; i++) bomb[i]->Render(player->xpos, player->ypos);
         break;
     case LEVEL4:
         break;
@@ -286,7 +289,7 @@ void Game::enterState(State id){
         Mix_FadeOutMusic(500);
         currentLevel = 2;
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/spider.png",34,65); // 42 97
+        player = new Player("Assets/Character/spider.png",42,97);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         bat[0] = new Bat (32,96,1);
         bat[1] = new Bat (28,94,1);
@@ -369,6 +372,25 @@ void Game::enterState(State id){
         trap[58] = new Trap (43,63,4);
         break;
     case LEVEL3:
+        Mix_FadeOutMusic(500);
+        currentLevel = 3;
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/spider.png",30,33); // 52 60
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        bomb[0] = new Bomb (54,23,2);
+        bomb[1] = new Bomb (53,15,3);
+        bomb[2] = new Bomb (47,19,3);
+        bomb[3] = new Bomb (45,15,2);
+        bomb[4] = new Bomb (44,25,3);
+        bomb[5] = new Bomb (37,22,3);
+        bomb[6] = new Bomb (33,32,2);
+        bomb[7] = new Bomb (32,29,4);
+        bomb[8] = new Bomb (30,24,2);
+        bomb[9] = new Bomb (30,14,4);
+        bomb[10] = new Bomb (29,14,4);
+        bomb[11] = new Bomb (27,33,2);
+        bomb[12] = new Bomb (19,30,3);
+        bomb[13] = new Bomb (34,12,3);
         break;
     case LEVEL4:
         break;
@@ -414,16 +436,14 @@ void Game::exitState(State id){
         Mix_FadeInMusic(gMusic,-1,500);
         map = nullptr;
         player = nullptr;
-        for (int i = 0; i < 20; i++)
-        {
-            bat[i] = nullptr;
-        }
-        for (int i = 0; i < 59; i++)
-        {
-            trap[i] = nullptr;
-        }
+        for (int i = 0; i < 20; i++) bat[i] = nullptr;
+        for (int i = 0; i < 59; i++) trap[i] = nullptr;
         break;
     case LEVEL3:
+        Mix_FadeInMusic(gMusic,-1,500);
+        map = nullptr;
+        player = nullptr;
+        for (int i = 0; i < 14; i++) bomb[i] = nullptr;
         break;
     case LEVEL4:
         break;
@@ -473,7 +493,7 @@ void Game::updateGame(int x){
         }
         break;
     case LEVEL2:
-                player->Update(camera, player->xpos, player->ypos);
+        player->Update(camera, player->xpos, player->ypos);
         if(!x)
         {
             for (int i = 0; i < 20; i++) bat[i]->Update(map);
@@ -508,6 +528,19 @@ void Game::updateGame(int x){
         }
         break;
     case LEVEL3:
+        player->Update(camera, player->xpos, player->ypos);
+        if(!x)
+        {
+            for (int i = 0; i < 14; i++) bomb[i]->Update(map);
+        }
+        for (int i = 0; i < 14; i++)
+        {
+            if(player->Collision(bomb[i]->hitbox))
+            {
+//                isLose = true;
+                break;
+            }
+        }
         break;
     case LEVEL4:
         break;

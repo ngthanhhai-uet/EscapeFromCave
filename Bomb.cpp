@@ -17,8 +17,8 @@ void Bomb::Update(Map* map)
 {
     if(typeBomb == 1) // right //
     {
-        xBomb += 4;
-        if(map->curr_map[yBomb/32][(xBomb+4)/32] <= 46)
+        xBomb += 1;
+        if(map->curr_map[yBomb/32][(xBomb+1)/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
@@ -27,32 +27,32 @@ void Bomb::Update(Map* map)
     }
     if(typeBomb == 2) // left //
     {
-        if(map->curr_map[yBomb/32][(xBomb-4)/32] <= 46)
+        if(map->curr_map[yBomb/32][(xBomb-1)/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        xBomb -= 4;
+        xBomb -= 1;
         hitbox.x = xBomb;
     }
     if(typeBomb == 3) // down //
     {
-        if(map->curr_map[(yBomb+4)/32][xBomb/32] <= 46)
+        if(map->curr_map[(yBomb+1)/32][xBomb/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        yBomb += 4;
+        yBomb += 1;
         hitbox.y = yBomb;
     }
     if(typeBomb == 4) // up //
     {
-        if(map->curr_map[(yBomb-4)/32][xBomb/32] <= 46)
+        if(map->curr_map[(yBomb-1)/32][xBomb/32] <= 46)
         {
             xBomb = xStart;
             yBomb = yStart;
         }
-        yBomb -= 4;
+        yBomb -= 1;
         hitbox.y = yBomb;
     }
 }
