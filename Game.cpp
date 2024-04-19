@@ -18,7 +18,7 @@ TextManager* text;
 Map* map;
 Player* player;
 Bat* bat[20];
-Bomb* bomb[14];
+Bomb* bomb[24];
 Peak* peak[7];
 Trap* trap[65];
 SDL_Rect camera;
@@ -35,6 +35,10 @@ void Game::handleEvent(){
     case LEVEL3:
     case LEVEL4:
     case LEVEL5:
+    case LEVEL6:
+    case LEVEL7:
+    case LEVEL8:
+    case LEVEL9:
         if(gEvent.type == SDL_KEYDOWN) player->Handle(gEvent, this, map);
         break;
     case GUIDE:
@@ -113,7 +117,7 @@ void Game::handleEvent(){
             if(isInside(x,y,337,426,181,289))switchState(LEVEL1);
             if(isInside(x,y,450,538,181,279) && maxLevel >= 2) switchState(LEVEL2);
             if(isInside(x,y,562,651,181,279) && maxLevel >= 3) switchState(LEVEL3);
-            if(isInside(x,y,382,371,290,388) && maxLevel >= 4) switchState(LEVEL4);
+            if(isInside(x,y,282,371,290,388) && maxLevel >= 4) switchState(LEVEL4);
             if(isInside(x,y,395,483,290,388) && maxLevel >= 5) switchState(LEVEL5);
             if(isInside(x,y,508,596,290,388) && maxLevel >= 6) switchState(LEVEL6);
             if(isInside(x,y,621,709,290,388) && maxLevel >= 7) switchState(LEVEL7);
@@ -165,35 +169,33 @@ void Game::renderGame(){
         SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
         break;
     case LEVEL1:
-        map->DrawMap(camera);
-        player->Render();
-        for (int i = 0; i < 10; i++) trap[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 3; i++) bat[i]->Render(player->xpos, player->ypos);
-        break;
     case LEVEL2:
-        map->DrawMap(camera);
-        player->Render();
-        for (int i = 0; i < 59; i++) trap[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 20; i++) bat[i]->Render(player->xpos, player->ypos);
-        break;
     case LEVEL3:
-        map->DrawMap(camera);
-        player->Render();
-        for (int i = 0; i < 14; i++) bomb[i]->Render(player->xpos, player->ypos);
-        break;
     case LEVEL4:
-        map->DrawMap(camera);
-        player->Render();
-        for (int i = 0; i < 4; i++) bomb[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 7; i++) peak[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 2; i++) bat[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 63; i++) trap[i]->Render(player->xpos, player->ypos);
-        break;
     case LEVEL5:
+    case LEVEL6:
         map->DrawMap(camera);
         player->Render();
-        for (int i = 0; i < 15; i++) trap[i]->Render(player->xpos, player->ypos);
-        for (int i = 0; i < 3; i++) bomb[i]->Render(player->xpos, player->ypos);
+        for (int i = 0; i < 20; i++)
+        {
+            if(bat[i] == nullptr) break;
+            bat[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 65; i++)
+        {
+            if(trap[i] == nullptr) break;
+            trap[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 7; i++)
+        {
+            if(peak[i] == nullptr) break;
+            peak[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 24; i++)
+        {
+            if(bomb[i] == nullptr) break;
+            bomb[i]->Render(player->xpos, player->ypos);
+        }
         break;
     default:
         break;
@@ -460,6 +462,21 @@ void Game::enterState(State id){
         trap[13] = new Trap (17,24,3);
         trap[14] = new Trap (17,22,4);
         break;
+    case LEVEL6:
+        Mix_FadeOutMusic(500);
+        currentLevel = 6;
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/spider.png",19,12);
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        bomb[0] = new Bomb (29,16,3);
+        trap[0] = new Trap (18,23,4);
+        trap[1] = new Trap (19,24,4);
+        trap[2] = new Trap (23,22,4);
+        trap[3] = new Trap (24,22,4);
+        trap[4] = new Trap (25,22,4);
+        trap[5] = new Trap (26,22,4);
+        trap[6] = new Trap (27,22,4);
+        break;
     default:
         break;
     }
@@ -488,7 +505,7 @@ void Game::exitState(State id){
         Mix_FadeInMusic(gMusic,-1,500);
         map = nullptr;
         player = nullptr;
-        for (int i = 0; i < 14; i++) bomb[i] = nullptr;
+        for (int i = 0; i < 24; i++) bomb[i] = nullptr;
         for (int i = 0; i < 7; i++) peak[i] = nullptr;
         for (int i = 0; i < 20; i++) bat[i] = nullptr;
         for (int i = 0; i < 63; i++) trap[i] = nullptr;
@@ -502,117 +519,47 @@ void Game::updateGame(int x){
     switch(gState)
     {
     case LEVEL1:
-        player->Update(camera, player->xpos, player->ypos);
-        if(!x)
-        {
-            for (int i = 0; i < 3; i++) bat[i]->Update(map);
-            for (int i = 0; i < 10; i++) trap[i]->Update();
-        }
-        for (int i = 0; i < 3; i++)
-        {
-            if(player->Collision(bat[i]->hitbox))
-            {
-                isLose = true;
-                break;
-            }
-        }
-        for(int i = 0; i < 10; i++)
-        {
-            if(player->Collision(trap[i]->hitbox))
-            {
-                if(trap[i]->activated)
-                {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
-                    {
-                        isLose = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    trap[i]->activatedTime = SDL_GetTicks();
-                    trap[i]->activated = true;
-                }
-            }
-        }
-        break;
     case LEVEL2:
-        player->Update(camera, player->xpos, player->ypos);
-        if(!x)
-        {
-            for (int i = 0; i < 20; i++) bat[i]->Update(map);
-            for (int i = 0; i < 59; i++) trap[i]->Update();
-        }
-        for (int i = 0; i < 20; i++)
-        {
-            if(player->Collision(bat[i]->hitbox))
-            {
-                isLose = true;
-                break;
-            }
-        }
-        for(int i = 0; i < 59; i++)
-        {
-            if(player->Collision(trap[i]->hitbox))
-            {
-                if(trap[i]->activated)
-                {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
-                    {
-                        isLose = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    trap[i]->activatedTime = SDL_GetTicks();
-                    trap[i]->activated = true;
-                }
-            }
-        }
-        break;
     case LEVEL3:
-        player->Update(camera, player->xpos, player->ypos);
-        if(!x)
-        {
-            for (int i = 0; i < 14; i++) bomb[i]->Update(map);
-        }
-        for (int i = 0; i < 14; i++)
-        {
-            if(player->Collision(bomb[i]->hitbox))
-            {
-//                isLose = true;
-                break;
-            }
-        }
-        break;
     case LEVEL4:
+    case LEVEL5:
+    case LEVEL6:
         player->Update(camera, player->xpos, player->ypos);
         if(!x)
         {
-            for (int i = 0; i < 2; i++) bat[i]->Update(map);
-            for (int i = 0; i < 63; i++) trap[i]->Update();
-            for (int i = 0; i < 7; i++) peak[i]->Update();
-            for (int i = 0; i < 4; i++) bomb[i]->Update(map);
-        }
-        for (int i = 0; i < 2; i++)
-        {
-            if(player->Collision(bat[i]->hitbox))
+            for (int i = 0; i < 24; i++)
             {
-                isLose = true;
-                break;
+                if (bomb[i] == nullptr) break;
+                bomb[i]->Update(map);
+            }
+            for (int i = 0; i < 65; i++)
+            {
+                if(trap[i] == nullptr) break;
+                trap[i]->Update();
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                if(peak[i] == nullptr) break;
+                peak[i]->Update();
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                if(bat[i] == nullptr) break;
+                bat[i]->Update(map);
             }
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 24; i++)
         {
+            if(bomb[i] == nullptr) break;
             if(player->Collision(bomb[i]->hitbox))
             {
 //                isLose = true;
                 break;
             }
         }
-        for(int i = 0; i < 63; i++)
+        for(int i = 0; i < 65; i++)
         {
+            if(trap[i] == nullptr) break;
             if(player->Collision(trap[i]->hitbox))
             {
                 if(trap[i]->activated)
@@ -626,47 +573,24 @@ void Game::updateGame(int x){
                     trap[i]->activatedTime = SDL_GetTicks();
                     trap[i]->activated = true;
                 }
+            }
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if(bat[i] == nullptr) break;
+            if(player->Collision(bat[i]->hitbox))
+            {
+                isLose = true;
+                break;
             }
         }
         for (int i = 0; i < 7; i++)
         {
+            if(peak[i] == nullptr) break;
             if(player->Collision(peak[i]->hitbox) && peak[i]->activated)
             {
                 isLose = true;
                 break;
-            }
-        }
-        break;
-    case LEVEL5:
-        player->Update(camera, player->xpos, player->ypos);
-        if(!x)
-        {
-            for (int i = 0; i < 3; i++) bomb[i]->Update(map);
-            for (int i = 0; i < 15; i++) trap[i]->Update();
-        }
-        for (int i = 0; i < 3; i++)
-        {
-            if(player->Collision(bomb[i]->hitbox))
-            {
-//                isLose = true;
-                break;
-            }
-        }
-        for(int i = 0; i < 15; i++)
-        {
-            if(player->Collision(trap[i]->hitbox))
-            {
-                if(trap[i]->activated)
-                {
-                    if(SDL_GetTicks() - trap[i]->activatedTime > 400)
-                    isLose = true;
-                    break;
-                }
-                else
-                {
-                    trap[i]->activatedTime = SDL_GetTicks();
-                    trap[i]->activated = true;
-                }
             }
         }
         break;
@@ -805,6 +729,7 @@ void Game::closeGame()
 {
     std::ofstream file("Assets/savegame.txt");
     file << isEnglish;
+    file << " ";
     file << maxLevel;
     file.close();
 	SDL_DestroyRenderer(gRenderer);

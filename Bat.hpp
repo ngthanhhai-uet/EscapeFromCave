@@ -14,6 +14,7 @@ public:
     void Render(int x, int y);
     int xBat, yBat;
     int vBat = 1;
+    int frame = 0;
     int typeBat;
     SDL_Rect hitbox;
     SDL_Texture* batTexture;

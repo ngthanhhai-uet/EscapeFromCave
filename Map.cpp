@@ -20,7 +20,7 @@ void Map::LoadMap(int level)
     if (level == 3) {width = 80; height = 73;}
     if (level == 4) {width = 81; height = 88;}
     if (level == 5) {width = 56; height = 38;}
-    if (level == 6) {;}
+    if (level == 6) {width = 45; height = 34;}
     if (level == 7) {;}
     if (level == 8) {;}
     if (level == 9) {;}
