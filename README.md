@@ -37,17 +37,17 @@ Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vậ
 
 + VẬT THỂ
 
-  + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/e0dfee44-7e26-42a7-9c97-fb859e4876c9)   `Spike`
+  +  ![test](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/06c938c5-a067-48c2-87e7-9c92e11e371c)   `Spike`
   + ![peak](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/c1ace5d7-e1f0-4e9c-aa57-2321a63e8ef6)   `Peak` 
   +  ![trap](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/5ef89510-487b-48ea-ae5a-cb078395c43a)   `Trap` 
-  + ![tram](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/656e7a5a-6f6e-4e64-9236-f0fbb753341e)   `Trampoline`
+  + ![test](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/227c96b8-0e34-4d99-a95b-0a1ff1cf9f0a)  `Trampoline`
   + ![bat](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/9b36c86e-2797-41bd-ad75-db690b3d9f8c)   `Bat`
   + ![tele](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/0a0cd478-2231-4f19-a4ee-0083b6f0f612)   `Teleporter`
   + ![coin](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/82a73dbb-ebce-4520-a7d6-4fafa6843455)   `Coin`
   + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/ba9de982-3dbe-4a8a-9686-a1eeb5909cd8)   `Lava`
   + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/f418ea31-b4f7-43e3-aa28-4fafbb7aae11)   `Blackgate`
   + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/41501d66-b948-49e4-bceb-b49f763244e7)   `Canon`
-  + ![bomb](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/d1b83e6f-8fd1-4b02-b076-6802537c8d4c)   `Bomb`
+  + ![bomb](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/7a2e776c-faf8-453f-82c4-32a5bc1496be)   `Bomb`
 
 + DEMO: [`Youtube`](https://www.youtube.com)
 
