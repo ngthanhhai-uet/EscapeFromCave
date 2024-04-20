@@ -242,7 +242,10 @@ void Game::renderGame(){
     case LEVEL7:
         map->DrawMap(camera);
         player->Render();
-        if(lava != nullptr) lava->Render(player->xpos, player->ypos);
+        if(lava != nullptr)
+        {
+            lava->Render(player->xpos, player->ypos);
+        }
         for (int i = 0; i < 20; i++)
         {
             if(coin[i] == nullptr) break;
@@ -602,7 +605,7 @@ void Game::enterState(State id){
         currentLevel = 7;
         startTime = SDL_GetTicks();
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/robin.png",15,73);
+        player = new Player("Assets/Character/robin.png",20,73);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         lava = new Lava(0,79);
         break;
@@ -701,11 +704,11 @@ void Game::updateGame(int x){
                 bat[i]->Update(map);
             }
         }
-//        if(player->Collision(lava->hitbox))
-//        {
-//            isLose = true;
-//            break;
-//        }
+        if(lava != nullptr && player->Collision(lava->hitbox))
+        {
+            isLose = true;
+            break;
+        }
         for (int i = 0; i < 20; i++)
         {
             if(coin[i] == nullptr) break;
@@ -718,9 +721,9 @@ void Game::updateGame(int x){
         for (int i = 0; i < 24; i++)
         {
             if(bomb[i] == nullptr) break;
-            if(player->Collision(bomb[i]->hitbox))
+            if(player->Collision(bomb[i]->hitbox) && bomb[i]->wait == false)
             {
-//                isLose = true;
+                isLose = true;
                 break;
             }
         }

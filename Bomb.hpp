@@ -15,6 +15,8 @@ public:
     int xStart, yStart;
     int xBomb, yBomb;
     int typeBomb;
+    int lastTime;
+    bool wait;
     SDL_Rect hitbox;
     SDL_Texture* bombTexture;
 };
