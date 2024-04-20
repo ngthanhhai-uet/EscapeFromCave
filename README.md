@@ -1,4 +1,4 @@
-# **ESCAPE FROM CAVE - ngthanhhai**
+![ezgif-6-ccc2aeb765](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/bcd4254f-1453-4d73-818d-8af5a4009bd6)# **ESCAPE FROM CAVE - ngthanhhai**
 ## THÔNG TIN
 **Họ và tên** : `Nguyễn Thanh Hải`
 
@@ -16,7 +16,7 @@ Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vậ
 + MENU
   
 ![menu_en](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/c8ac3c09-352a-4534-afba-302fe0d6c847)
-:
+
 + SETTING
 
 ![setting_en](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/f14c7c6c-1153-4569-8894-fe31dc489c08)
@@ -26,8 +26,8 @@ Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vậ
 ![selectmap_en](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/d0853b2b-ddf0-42ba-8a6e-820e0d09fe59)
 
 + INGAME
-
-![image](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/c92cc24f-b60d-4474-b10a-837e13254833)
+  
+![ezgif-6-ccc2aeb765](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/093053c9-c151-4c30-bb1f-0778c0f85524)
 
 + NHÂN VẬT
 
@@ -68,11 +68,8 @@ Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vậ
 ## REFERENCE
 ### *Hướng dẫn*
 [`Lazyfoo`](https://lazyfoo.net/tutorials/SDL/index.php)
-
 [`SDL2.0 Wiki`](https://www.libsdl.org)
-
 [`ChatGPT4`](https://chat.openai.com)
-
 [`Let's Make Game`](https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=3) (giúp mình tạo được vòng lặp của một trò chơi, mình drop từ phần Entity Component System do base lập trình kém)
 ### *Đồ hoạ*
 Khoảng 40% đồ hoạ trong trò chơi này lấy từ  [`itch.io`](https://itch.io)
