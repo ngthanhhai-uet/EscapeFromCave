@@ -1,15 +1,15 @@
 # **ESCAPE FROM CAVE - ngthanhhai**
 ## GIỚI THIỆU:
-+ Họ và tên: Nguyễn Thanh Hải
-+ Mã số sinh viên: 23020057 / Trường Đại học Công nghệ - Đại học Quốc gia Hà Nội
-+ Đây là bài tập lớn được giảng viên học phần Lập Trình Nâng Cao INT 2215 giao cho sinh viên làm
++ Họ và tên: `Nguyễn Thanh Hải`
++ Mã số sinh viên: `23020057` `K68CD` `Trường Đại học Công nghệ`  `Đại học Quốc gia Hà Nội`
++ Đây là bài tập lớn được giảng viên học phần `INT2215 - Lập Trình Nâng Cao` giao cho sinh viên làm
 ## Ý TƯỞNG:
-Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật cản bất lợi của trò chơi Geometry Dash viết bằng ngôn ngữ lập trình C++ và sử dụng thư viện SDL
+Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vật cản bất lợi của trò chơi `Geometry Dash` viết bằng ngôn ngữ lập trình `C++` và sử dụng thư viện `SDL`
 ## CÀI ĐẶT:
 1. Sao chép repos này về máy tính của bạn
-2. Cài đặt IDE CodeBlock và thư viện SDL, SDL_image, SDL_ttf, SDL_mixer
-3. Mở file EscapeFromCave.cbp trong thư mục repos vừa tải về
-4. Ấn F9 trên bàn phím hoặc click chuột vào Build & Run để chạy trò chơi
+2. Cài đặt IDE `CodeBlock` và thư viện `SDL` `SDL_image` `SDL_ttf` `SDL_mixer`
+3. Mở file `EscapeFromCave.cbp` trong thư mục repos vừa tải về
+4. Ấn `F9` trên bàn phím hoặc click chuột vào `Build & Run` để chạy trò chơi
 ## PREVIEW:
 + MENU
   
@@ -29,27 +29,28 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 
 + NHÂN VẬT
 
-  + ![robin](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/08207a2f-b74f-4bc2-af0b-40c82a499a69) : Robin
-  + ![spider](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/0ccde854-4a45-4410-9edf-3731c97ae9ea) : Spider
-  + ![sponge](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/59d17d25-d948-4a60-984b-940aa5b33c01) : Sponge
+  + ![robin](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/08207a2f-b74f-4bc2-af0b-40c82a499a69)   `Robin`
+  + ![spider](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/0ccde854-4a45-4410-9edf-3731c97ae9ea)   `Spider`
+  + ![sponge](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/59d17d25-d948-4a60-984b-940aa5b33c01)   `Sponge`
 
 + VẬT THỂ
 
-  + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/e0dfee44-7e26-42a7-9c97-fb859e4876c9) : Spike
-  + ![peak](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/c1ace5d7-e1f0-4e9c-aa57-2321a63e8ef6) : Peak 
-  +  ![trap](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/5ef89510-487b-48ea-ae5a-cb078395c43a) : Trap 
-  + ![tram](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/656e7a5a-6f6e-4e64-9236-f0fbb753341e) : Trampoline
-  + ![bat](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/9b36c86e-2797-41bd-ad75-db690b3d9f8c) : Bat
-  + ![tele](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/0a0cd478-2231-4f19-a4ee-0083b6f0f612) : Teleporter
-  + ![coin](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/82a73dbb-ebce-4520-a7d6-4fafa6843455) : Coin
-  + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/ba9de982-3dbe-4a8a-9686-a1eeb5909cd8) : Lava
-  + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/f418ea31-b4f7-43e3-aa28-4fafbb7aae11) : Blackgate
-  + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/41501d66-b948-49e4-bceb-b49f763244e7) : Canon
-  + ![bomb](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/d1b83e6f-8fd1-4b02-b076-6802537c8d4c) : Bomb
+  + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/e0dfee44-7e26-42a7-9c97-fb859e4876c9)   `Spike`
+  + ![peak](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/c1ace5d7-e1f0-4e9c-aa57-2321a63e8ef6)   `Peak` 
+  +  ![trap](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/5ef89510-487b-48ea-ae5a-cb078395c43a)   `Trap` 
+  + ![tram](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/656e7a5a-6f6e-4e64-9236-f0fbb753341e)   `Trampoline`
+  + ![bat](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/9b36c86e-2797-41bd-ad75-db690b3d9f8c)   `Bat`
+  + ![tele](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/0a0cd478-2231-4f19-a4ee-0083b6f0f612)   `Teleporter`
+  + ![coin](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/82a73dbb-ebce-4520-a7d6-4fafa6843455)   `Coin`
+  + ![lava](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/ba9de982-3dbe-4a8a-9686-a1eeb5909cd8)   `Lava`
+  + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/f418ea31-b4f7-43e3-aa28-4fafbb7aae11)   `Blackgate`
+  + ![canon](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/41501d66-b948-49e4-bceb-b49f763244e7)   `Canon`
+  + ![bomb](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/d1b83e6f-8fd1-4b02-b076-6802537c8d4c)   `Bomb`
 
 ## DEMO:
 
-+ Video:
+[`Youtube`](https://www.youtube.com)
+
 ## NHỮNG KIẾN THỨC ĐÃ SỬ DỤNG
 + Vòng lặp, mảng tĩnh, mảng động, xâu
 + Sử dụng lớp, cấu trúc
@@ -66,17 +67,18 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 + Sử dụng hoạt ảnh (Animation & Sprite)
 ## REFERENCE:
 ### *Guide*:
-+ Lazyfoo: https://lazyfoo.net/tutorials/SDL/index.php
-+ SDL2.0 Wiki: https://www.libsdl.org
-+ ChatGPT4: https://chat.openai.com
-+ Let's Make Game: https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=3 (help me how to making a game loop and some basic things about SDL)
++ [`Lazyfoo`](https://lazyfoo.net/tutorials/SDL/index.php)
++ [`SDL2.0 Wiki`](https://www.libsdl.org)
++ [`ChatGPT4`](https://chat.openai.com)
++ [`Let's Make Game`](https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=3) (help me how to making a game loop and some basic things about SDL)
 ### *Đồ hoạ*:
-+ Khoảng 40% đồ hoạ trong trò chơi này lấy từ: https://itch.io
-+ Thiết kế thêm hoặc bổ sung đồ hoạ bằng: https://www.aseprite.org/
-+ Toàn bộ giao diện sảnh tự thiết kế bằng: https://www.canva.com
++ Khoảng 40% đồ hoạ trong trò chơi này lấy từ  [`itch.io`](https://itch.io)
++ Thiết kế thêm hoặc bổ sung đồ hoạ bằng [`Aseprite`](https://www.aseprite.org/)
++ Toàn bộ giao diện sảnh tự thiết kế bằng  [`Canva`](https://www.canva.com)
 ### *Âm thanh:*
-+ Nguồn: https://www.youtube.com
++ Nguồn [`Youtube`](https://www.youtube.com)
 ## TỰ ĐÁNH GIÁ
+
 ![image](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/f7c50dad-d3a3-4a33-a761-06f1de5cfb30)
 
 Dựa trên barem điểm giảng viên đưa ra & một số luận điểm nâng cao band điểm
@@ -96,6 +98,6 @@ Từ những luận điểm trên mình nghĩ sẽ nhỉnh hơn band điểm 7.5
 + Cửa hàng
 + Bản đồ vô cực
 ## LIÊN HỆ:
-+ 💩 Github: https://github.com/ngthanhhai-uet
-+ 💩 Facebook: https://www.facebook.com/ngthanhhai.official
-+ 📧 Mail: optimus1072005@gmail.com
++ 💩 [`Github`](https://github.com/ngthanhhai-uet) 
++ 💩 [`Facebook`](https://www.facebook.com/ngthanhhai.official)
++ 📧 [`Mail`](optimus1072005@gmail.com)
