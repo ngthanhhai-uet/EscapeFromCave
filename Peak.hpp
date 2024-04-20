@@ -9,6 +9,7 @@ class Peak
 {
 public:
     Peak(int x, int y);
+    ~Peak();
     void Update();
     void Render(int x, int y);
     int xPeak; int yPeak;

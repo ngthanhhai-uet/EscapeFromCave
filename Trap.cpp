@@ -13,6 +13,19 @@ Trap::Trap(int x, int y, int type)
     hitbox.x = x; hitbox.y = y;
     hitbox.w = 32; hitbox.h = 32;
 }
+Trap::~Trap()
+{
+    if (trapon != nullptr)
+    {
+        SDL_DestroyTexture(trapon);
+        trapon = nullptr;
+    }
+    if (trapoff != nullptr)
+    {
+        SDL_DestroyTexture(trapoff);
+        trapoff = nullptr;
+    }
+}
 void Trap::Update()
 {
     if(activated && SDL_GetTicks() - activatedTime > 1500) activated = false;

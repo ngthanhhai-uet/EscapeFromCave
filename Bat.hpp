@@ -10,6 +10,7 @@ class Bat {
 private:
 public:
     Bat(int x, int y, int type);
+    ~Bat();
     void Update(Map *map);
     void Render(int x, int y);
     int xBat, yBat;

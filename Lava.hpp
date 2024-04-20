@@ -9,6 +9,7 @@ class Lava
 {
 public:
     Lava(int x, int y);
+    ~Lava();
     int xLava;
     int yLava;
     void Update();

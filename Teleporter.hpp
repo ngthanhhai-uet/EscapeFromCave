@@ -9,6 +9,7 @@ class Teleporter
 {
 public:
     Teleporter(int x, int y);
+    ~Teleporter();
     int xTeleporter;
     int yTeleporter;
     int frame = 0;

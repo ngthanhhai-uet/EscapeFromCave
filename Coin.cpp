@@ -11,6 +11,14 @@ Coin::Coin(int x, int y)
     hitbox.x = x; hitbox.y = y;
     hitbox.w = 32; hitbox.h = 32;
 }
+Coin::~Coin()
+{
+    if(coinTexture)
+    {
+        SDL_DestroyTexture(coinTexture);
+        coinTexture = nullptr;
+    }
+}
 void Coin::Update()
 {
     if(frame/6 == 1) animation = {0,0,32,32};

@@ -10,6 +10,7 @@ class Bomb {
 private:
 public:
     Bomb(int x, int y, int type);
+    ~Bomb();
     void Update(Map *map);
     void Render(int x, int y);
     int xStart, yStart;

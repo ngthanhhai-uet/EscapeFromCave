@@ -16,6 +16,6 @@ public:
     SDL_Color textColor;
     TextManager(int fontSize);
     ~TextManager();
-    void Render(std::string textstr, int x, int y);
+    void Render(std::string textstr, int x, int y, bool middle);
 };
 #endif

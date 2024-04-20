@@ -14,6 +14,14 @@ Bat::Bat(int x, int y, int type)
     hitbox.x = x; hitbox.y = y;
     hitbox.w = 32; hitbox.h = 32;
 }
+Bat::~Bat()
+{
+    if(batTexture)
+    {
+        SDL_DestroyTexture(batTexture);
+        batTexture = nullptr;
+    }
+}
 void Bat::Update(Map* map)
 {
     if(!typeBat)

@@ -10,6 +10,12 @@ Map::Map(int level)
     tile = TextureManager::LoadTexture("Assets/Map/tile.png");
     LoadMap(level);
 }
+Map::~Map() {
+    if (tile != nullptr) {
+        SDL_DestroyTexture(tile);
+        tile = nullptr;
+    }
+}
 void Map::LoadMap(int level)
 {
     std::string filename = "Assets/Map/level" + std::to_string(level) + ".txt";

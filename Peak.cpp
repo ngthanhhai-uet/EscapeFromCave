@@ -13,6 +13,19 @@ Peak::Peak(int x, int y)
     hitbox.w = 96;
     hitbox.h = 96;
 }
+Peak::~Peak()
+{
+    if(peakon)
+    {
+        SDL_DestroyTexture(peakon);
+        peakon = nullptr;
+    }
+    if(peakoff)
+    {
+        SDL_DestroyTexture(peakoff);
+        peakoff = nullptr;
+    }
+}
 int Peak::deltaTime()
 {
     int currentTime = SDL_GetTicks();

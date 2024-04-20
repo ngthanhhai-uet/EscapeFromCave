@@ -9,6 +9,14 @@ Teleporter::Teleporter(int x, int y)
     xTeleporter = x;
     yTeleporter = y;
 }
+Teleporter::~Teleporter()
+{
+    if(teleporterTexture)
+    {
+        SDL_DestroyTexture(teleporterTexture);
+        teleporterTexture = nullptr;
+    }
+}
 void Teleporter::Update()
 {
     if(frame/5 == 1) animation = {0,0,32,32};

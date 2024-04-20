@@ -10,6 +10,12 @@ Player::Player(const char* pngfile, int x, int y)
     playerTexture = TextureManager::LoadTexture(pngfile);
     xpos = x; ypos = y;
 }
+Player::~Player() {
+    if (playerTexture != nullptr) {
+        SDL_DestroyTexture(playerTexture);
+        playerTexture = nullptr;
+    }
+}
 bool Player::Collision(SDL_Rect hitbox)
 {
     if(xpos + 32 <= hitbox.x || hitbox.x + hitbox.w <= xpos || ypos + 32 <= hitbox.y || hitbox.y + hitbox.h <= ypos) return false;

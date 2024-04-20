@@ -13,6 +13,14 @@ Lava::Lava(int x, int y)
     hitbox.w = 41 * 32;
     hitbox.h = 32;
 }
+Lava::~Lava()
+{
+    if(lavaTexture)
+    {
+        SDL_DestroyTexture(lavaTexture);
+        lavaTexture = nullptr;
+    }
+}
 void Lava::Update()
 {
     yLava -= 4;

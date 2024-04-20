@@ -7,6 +7,7 @@ class Trap
 {
 public:
     Trap(int x, int y, int type);
+    ~Trap();
     void Update();
     void Render(int x, int y);
     SDL_Rect hitbox;

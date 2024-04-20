@@ -9,6 +9,7 @@ class Coin
 {
 public:
     Coin(int x, int y);
+    ~Coin();
     int xCoin;
     int yCoin;
     bool collected = false;

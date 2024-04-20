@@ -13,6 +13,14 @@ Bomb::Bomb(int x, int y, int type)
     xBomb = x; yBomb = y; typeBomb = type; xStart = x; yStart = y;
     hitbox.x = x; hitbox.y = y; hitbox.w = 16; hitbox.h = 16;
 }
+Bomb::~Bomb()
+{
+    if(bombTexture)
+    {
+        SDL_DestroyTexture(bombTexture);
+        bombTexture = nullptr;
+    }
+}
 void Bomb::Update(Map* map)
 {
     if(typeBomb == 1) // right //

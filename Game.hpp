@@ -25,6 +25,7 @@ public:
     bool isWin = false;
     bool isPause = false;
     int startTime;
+    int tempScore;
     int currentLevel;
     bool changeState;
     // - Save varible - //
