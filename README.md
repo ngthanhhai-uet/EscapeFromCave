@@ -66,7 +66,7 @@ Dựa trên góc nhìn của trò chơi `Pacman` và lối chơi né tránh vậ
 + Kỹ thuật Scrolling View
 + Sử dụng hoạt ảnh (Animation & Sprite)
 ## REFERENCE:
-### *Guide*:
+### *Hướng dẫn*:
 + [`Lazyfoo`](https://lazyfoo.net/tutorials/SDL/index.php)
 + [`SDL2.0 Wiki`](https://www.libsdl.org)
 + [`ChatGPT4`](https://chat.openai.com)
