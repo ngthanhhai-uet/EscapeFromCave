@@ -1,11 +1,11 @@
 #ifndef Game_hpp
 #define Game_hpp
 #include <iostream>
+#include <fstream>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-#include <fstream>
 class Game
 {
 private:

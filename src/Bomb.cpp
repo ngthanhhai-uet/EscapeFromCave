@@ -1,7 +1,5 @@
 #include "Game.hpp"
-#include "Bat.hpp"
 #include "Map.hpp"
-#include "Player.hpp"
 #include "Bomb.hpp"
 #include "../manager/TextureManager.hpp"
 Bomb::Bomb(int x, int y, int type)

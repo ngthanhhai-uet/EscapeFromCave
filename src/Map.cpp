@@ -1,8 +1,6 @@
 #include "Game.hpp"
-#include "Bat.hpp"
 #include "Map.hpp"
 #include "../manager/TextureManager.hpp"
-#include "Player.hpp"
 Map::Map(int level)
 {
     src.x = 0; src.y = 0; src.w = 32; src.h = 32;

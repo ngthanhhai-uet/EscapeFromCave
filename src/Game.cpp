@@ -10,7 +10,6 @@
 #include "Teleporter.hpp"
 #include "../manager/TextManager.hpp"
 #include "../manager/TextureManager.hpp"
-
 #include <string>
 
 Game::Game(){}
