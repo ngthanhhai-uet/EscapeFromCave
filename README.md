@@ -103,6 +103,4 @@ Khi nhân vật trong trại thái di chuyển, các vật thể động như Ba
 + Cửa hàng
 + Bản đồ vô cực
 ## LIÊN HỆ
-+ 💩 [`Github`](https://github.com/ngthanhhai-uet) 
-+ 💩 [`Facebook`](https://www.facebook.com/ngthanhhai.official)
-+ 📧 [`Mail`](optimus1072005@gmail.com)
+[`Github`](https://github.com/ngthanhhai-uet)  [`Facebook`](https://www.facebook.com/ngthanhhai.official) [`Mail`](optimus1072005@gmail.com)
