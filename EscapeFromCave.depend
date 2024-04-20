@@ -2,7 +2,7 @@
 1713275879 source:x:\escapefromcave\main.cpp
 	"Game.hpp"
 
-1713541352 x:\escapefromcave\game.hpp
+1713573914 x:\escapefromcave\game.hpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -10,14 +10,14 @@
 	<SDL_ttf.h>
 	<fstream>
 
-1713473626 source:x:\escapefromcave\bat.cpp
+1713573558 source:x:\escapefromcave\bat.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
 	"TextureManager.hpp"
 	"Player.hpp"
 
-1713552463 x:\escapefromcave\bat.hpp
+1713572989 x:\escapefromcave\bat.hpp
 	<iostream>
 	"Map.hpp"
 	<SDL.h>
@@ -50,7 +50,7 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1713558181 source:x:\escapefromcave\game.cpp
+1713588791 source:x:\escapefromcave\game.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
@@ -59,9 +59,13 @@
 	"Bomb.hpp"
 	"Peak.hpp"
 	"Trap.hpp"
+	"Coin.hpp"
+	"Lava.hpp"
 	"TextManager.hpp"
+	"Teleporter.hpp"
+	<string>
 
-1713324382 x:\escapefromcave\textmanager.hpp
+1713570944 x:\escapefromcave\textmanager.hpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -69,20 +73,20 @@
 	<SDL_ttf.h>
 	<string>
 
-1713557450 source:x:\escapefromcave\map.cpp
+1713581411 source:x:\escapefromcave\map.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
 	"TextureManager.hpp"
 	"Player.hpp"
 
-1713556451 source:x:\escapefromcave\player.cpp
+1713576828 source:x:\escapefromcave\player.cpp
 	"Game.hpp"
 	"Map.hpp"
 	"TextureManager.hpp"
 	"Player.hpp"
 
-1713324574 source:x:\escapefromcave\textmanager.cpp
+1713570944 source:x:\escapefromcave\textmanager.cpp
 	"Game.hpp"
 	"TextManager.hpp"
 
@@ -127,4 +131,40 @@
 	"Game.hpp"
 	"Trap.hpp"
 	"TextureManager.hpp"
+
+1713567227 source:x:\escapefromcave\coin.cpp
+	"Coin.hpp"
+	"Game.hpp"
+	"TextureManager.hpp"
+
+1713563842 x:\escapefromcave\coin.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713575058 x:\escapefromcave\teleporter.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713575491 source:x:\escapefromcave\teleporter.cpp
+	"Teleporter.hpp"
+	"Game.hpp"
+	"TextureManager.hpp"
+
+1713588733 source:x:\escapefromcave\lava.cpp
+	"Lava.hpp"
+	"Game.hpp"
+	"TextureManager.hpp"
+
+1713580501 x:\escapefromcave\lava.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
 

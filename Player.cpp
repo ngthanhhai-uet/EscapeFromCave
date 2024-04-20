@@ -26,6 +26,33 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
         flip = SDL_FLIP_NONE; degrees = +90;
         while(1)
         {
+            if(game->currentLevel == 4)
+            {
+                if (xpos == 30 * 32 && ypos == 43 * 32) { xpos = 31 * 32; ypos = 46 * 32;}
+                else if (xpos == 31 * 32 && ypos == 46 * 32) { xpos = 30 * 32; ypos = 43 * 32;}
+                else if (xpos == 35 * 32 && ypos == 42 * 32) { xpos = 34 * 32; ypos = 52 * 32;}
+                else if (xpos == 34 * 32 && ypos == 52 * 32) { xpos = 35 * 32; ypos = 42 * 32;}
+                else if (xpos == 35 * 32 && ypos == 48 * 32) { xpos = 24 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 51 * 32) { xpos = 35 * 32; ypos = 48 * 32;}
+                else if (xpos == 24 * 32 && ypos == 49 * 32) { xpos = 22 * 32; ypos = 50 * 32;}
+                else if (xpos == 22 * 32 && ypos == 50 * 32) { xpos = 24 * 32; ypos = 49 * 32;}
+                else if (xpos == 17 * 32 && ypos == 51 * 32) { xpos = 22 * 32; ypos = 52 * 32;}
+                else if (xpos == 22 * 32 && ypos == 52 * 32) { xpos = 17 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 53 * 32) { xpos = 34 * 32; ypos = 58 * 32;}
+                else if (xpos == 34 * 32 && ypos == 58 * 32) { xpos = 24 * 32; ypos = 53 * 32;}
+                else if (xpos == 44 * 32 && ypos == 56 * 32) { xpos = 31 * 32; ypos = 60 * 32;}
+                else if (xpos == 31 * 32 && ypos == 60 * 32) { xpos = 44 * 32; ypos = 56 * 32;}
+                else if (xpos == 24 * 32 && ypos == 58 * 32) { xpos = 34 * 32; ypos = 65 * 32;}
+                else if (xpos == 34 * 32 && ypos == 65 * 32) { xpos = 24 * 32; ypos = 58 * 32;}
+                else if (xpos == 23 * 32 && ypos == 64 * 32) { xpos = 20 * 32; ypos = 71 * 32;}
+                else if (xpos == 20 * 32 && ypos == 71 * 32) { xpos = 23 * 32; ypos = 64 * 32;}
+            }
+            if(game->currentLevel == 6)
+            {
+                if(xpos == 17 * 32 && ypos == 18 * 32) { xpos = 23 * 32; ypos = 18 * 32;}
+                else if(xpos == 23 * 32 && ypos == 18 * 32) { xpos = 17 * 32; ypos = 18 * 32;}
+
+            }
             if(game->currentLevel == 5)
             {
                 if(xpos == 24 * 32 && ypos == 22 * 32) { xpos = 22 * 32; ypos = 22 * 32;}
@@ -52,7 +79,34 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
     case SDLK_UP:
         flip = SDL_FLIP_NONE; degrees = -90;
         while(1)
-        { // 37 25
+        {
+            if(game->currentLevel == 4)
+            {
+                if (xpos == 30 * 32 && ypos == 43 * 32) { xpos = 31 * 32; ypos = 46 * 32;}
+                else if (xpos == 31 * 32 && ypos == 46 * 32) { xpos = 30 * 32; ypos = 43 * 32;}
+                else if (xpos == 35 * 32 && ypos == 42 * 32) { xpos = 34 * 32; ypos = 52 * 32;}
+                else if (xpos == 34 * 32 && ypos == 52 * 32) { xpos = 35 * 32; ypos = 42 * 32;}
+                else if (xpos == 35 * 32 && ypos == 48 * 32) { xpos = 24 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 51 * 32) { xpos = 35 * 32; ypos = 48 * 32;}
+                else if (xpos == 24 * 32 && ypos == 49 * 32) { xpos = 22 * 32; ypos = 50 * 32;}
+                else if (xpos == 22 * 32 && ypos == 50 * 32) { xpos = 24 * 32; ypos = 49 * 32;}
+                else if (xpos == 17 * 32 && ypos == 51 * 32) { xpos = 22 * 32; ypos = 52 * 32;}
+                else if (xpos == 22 * 32 && ypos == 52 * 32) { xpos = 17 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 53 * 32) { xpos = 34 * 32; ypos = 58 * 32;}
+                else if (xpos == 34 * 32 && ypos == 58 * 32) { xpos = 24 * 32; ypos = 53 * 32;}
+                else if (xpos == 44 * 32 && ypos == 56 * 32) { xpos = 31 * 32; ypos = 60 * 32;}
+                else if (xpos == 31 * 32 && ypos == 60 * 32) { xpos = 44 * 32; ypos = 56 * 32;}
+                else if (xpos == 24 * 32 && ypos == 58 * 32) { xpos = 34 * 32; ypos = 65 * 32;}
+                else if (xpos == 34 * 32 && ypos == 65 * 32) { xpos = 24 * 32; ypos = 58 * 32;}
+                else if (xpos == 23 * 32 && ypos == 64 * 32) { xpos = 20 * 32; ypos = 71 * 32;}
+                else if (xpos == 20 * 32 && ypos == 71 * 32) { xpos = 23 * 32; ypos = 64 * 32;}
+            }
+            if(game->currentLevel == 6)
+            {
+                if(xpos == 17 * 32 && ypos == 18 * 32) { xpos = 23 * 32; ypos = 18 * 32;}
+                else if(xpos == 23 * 32 && ypos == 18 * 32) { xpos = 17 * 32; ypos = 18 * 32;}
+
+            }
             if(game->currentLevel == 5)
             {
                 if(xpos == 22 * 32 && ypos == 22 * 32) { xpos = 24 * 32; ypos = 22 * 32;}
@@ -80,6 +134,33 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
         flip = SDL_FLIP_NONE; degrees = 0;
         while(1)
         {
+            if(game->currentLevel == 4)
+            {
+                if (xpos == 30 * 32 && ypos == 43 * 32) { xpos = 31 * 32; ypos = 46 * 32;}
+                else if (xpos == 31 * 32 && ypos == 46 * 32) { xpos = 30 * 32; ypos = 43 * 32;}
+                else if (xpos == 35 * 32 && ypos == 42 * 32) { xpos = 34 * 32; ypos = 52 * 32;}
+                else if (xpos == 34 * 32 && ypos == 52 * 32) { xpos = 35 * 32; ypos = 42 * 32;}
+                else if (xpos == 35 * 32 && ypos == 48 * 32) { xpos = 24 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 51 * 32) { xpos = 35 * 32; ypos = 48 * 32;}
+                else if (xpos == 24 * 32 && ypos == 49 * 32) { xpos = 22 * 32; ypos = 50 * 32;}
+                else if (xpos == 22 * 32 && ypos == 50 * 32) { xpos = 24 * 32; ypos = 49 * 32;}
+                else if (xpos == 17 * 32 && ypos == 51 * 32) { xpos = 22 * 32; ypos = 52 * 32;}
+                else if (xpos == 22 * 32 && ypos == 52 * 32) { xpos = 17 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 53 * 32) { xpos = 34 * 32; ypos = 58 * 32;}
+                else if (xpos == 34 * 32 && ypos == 58 * 32) { xpos = 24 * 32; ypos = 53 * 32;}
+                else if (xpos == 44 * 32 && ypos == 56 * 32) { xpos = 31 * 32; ypos = 60 * 32;}
+                else if (xpos == 31 * 32 && ypos == 60 * 32) { xpos = 44 * 32; ypos = 56 * 32;}
+                else if (xpos == 24 * 32 && ypos == 58 * 32) { xpos = 34 * 32; ypos = 65 * 32;}
+                else if (xpos == 34 * 32 && ypos == 65 * 32) { xpos = 24 * 32; ypos = 58 * 32;}
+                else if (xpos == 23 * 32 && ypos == 64 * 32) { xpos = 20 * 32; ypos = 71 * 32;}
+                else if (xpos == 20 * 32 && ypos == 71 * 32) { xpos = 23 * 32; ypos = 64 * 32;}
+            }
+            if(game->currentLevel == 6)
+            {
+                if(xpos == 17 * 32 && ypos == 18 * 32) { xpos = 23 * 32; ypos = 18 * 32;}
+                else if(xpos == 23 * 32 && ypos == 18 * 32) { xpos = 17 * 32; ypos = 18 * 32;}
+
+            }
             if(game->currentLevel == 5)
             {
                 if(xpos == 22 * 32 && ypos == 22 * 32) { xpos = 24 * 32; ypos = 22 * 32;}
@@ -107,6 +188,33 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
         flip = SDL_FLIP_HORIZONTAL; degrees = 0;
         while(1)
         {
+            if(game->currentLevel == 4)
+            {
+                if (xpos == 30 * 32 && ypos == 43 * 32) { xpos = 31 * 32; ypos = 46 * 32;}
+                else if (xpos == 31 * 32 && ypos == 46 * 32) { xpos = 30 * 32; ypos = 43 * 32;}
+                else if (xpos == 35 * 32 && ypos == 42 * 32) { xpos = 34 * 32; ypos = 52 * 32;}
+                else if (xpos == 34 * 32 && ypos == 52 * 32) { xpos = 35 * 32; ypos = 42 * 32;}
+                else if (xpos == 35 * 32 && ypos == 48 * 32) { xpos = 24 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 51 * 32) { xpos = 35 * 32; ypos = 48 * 32;}
+                else if (xpos == 24 * 32 && ypos == 49 * 32) { xpos = 22 * 32; ypos = 50 * 32;}
+                else if (xpos == 22 * 32 && ypos == 50 * 32) { xpos = 24 * 32; ypos = 49 * 32;}
+                else if (xpos == 17 * 32 && ypos == 51 * 32) { xpos = 22 * 32; ypos = 52 * 32;}
+                else if (xpos == 22 * 32 && ypos == 52 * 32) { xpos = 17 * 32; ypos = 51 * 32;}
+                else if (xpos == 24 * 32 && ypos == 53 * 32) { xpos = 34 * 32; ypos = 58 * 32;}
+                else if (xpos == 34 * 32 && ypos == 58 * 32) { xpos = 24 * 32; ypos = 53 * 32;}
+                else if (xpos == 44 * 32 && ypos == 56 * 32) { xpos = 31 * 32; ypos = 60 * 32;}
+                else if (xpos == 31 * 32 && ypos == 60 * 32) { xpos = 44 * 32; ypos = 56 * 32;}
+                else if (xpos == 24 * 32 && ypos == 58 * 32) { xpos = 34 * 32; ypos = 65 * 32;}
+                else if (xpos == 34 * 32 && ypos == 65 * 32) { xpos = 24 * 32; ypos = 58 * 32;}
+                else if (xpos == 23 * 32 && ypos == 64 * 32) { xpos = 20 * 32; ypos = 71 * 32;}
+                else if (xpos == 20 * 32 && ypos == 71 * 32) { xpos = 23 * 32; ypos = 64 * 32;}
+            }
+            if(game->currentLevel == 6)
+            {
+                if(xpos == 17 * 32 && ypos == 18 * 32) { xpos = 23 * 32; ypos = 18 * 32;}
+                else if(xpos == 23 * 32 && ypos == 18 * 32) { xpos = 17 * 32; ypos = 18 * 32;}
+
+            }
             if(game->currentLevel == 5)
             {
                 if(xpos == 24 * 32 && ypos == 22 * 32) { xpos = 22 * 32; ypos = 22 * 32;}

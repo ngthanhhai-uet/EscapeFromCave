@@ -6,10 +6,10 @@ TextManager::TextManager(int fontSize) {
     textTexture = nullptr;
     textSurface = nullptr;
 }
-void TextManager::Render(const char* text, int x, int y, int type)
+void TextManager::Render(std::string textstr, int x, int y)
 {
-    if (type == 0) textColor = {255,255,255};
-    else textColor = {0,255,0};
+    const char* text = textstr.c_str();
+    textColor = {255,255,255};
     textSurface = TTF_RenderText_Solid(textFont, text, textColor);
     textTexture = SDL_CreateTextureFromSurface(Game::gRenderer, textSurface);
     SDL_Rect dest = {x, y, textSurface->w, textSurface->h};

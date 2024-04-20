@@ -6,12 +6,16 @@
 #include "Bomb.hpp"
 #include "Peak.hpp"
 #include "Trap.hpp"
+#include "Coin.hpp"
+#include "Lava.hpp"
 #include "TextManager.hpp"
-
+#include "Teleporter.hpp"
+#include <string>
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
 SDL_Texture* background;
+SDL_Texture* message;
 Mix_Music* gMusic = NULL;
 Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
@@ -21,6 +25,9 @@ Bat* bat[20];
 Bomb* bomb[24];
 Peak* peak[7];
 Trap* trap[65];
+Coin* coin[20];
+Lava* lava;
+Teleporter *teleporter[20];
 SDL_Rect camera;
 
 void Game::handleEvent(){
@@ -42,6 +49,28 @@ void Game::handleEvent(){
         if(gEvent.type == SDL_KEYDOWN) player->Handle(gEvent, this, map);
         break;
     case GUIDE:
+        switch(gEvent.type)
+        {
+        case SDL_MOUSEBUTTONDOWN:
+            SDL_GetMouseState(&x,&y);
+            if(isInside(x,y,913,970,22,76)) switchState(SELECTMAP);
+            break;
+        default:
+            break;
+        }
+        break;
+    case SHOP:
+        switch(gEvent.type)
+        {
+        case SDL_MOUSEBUTTONDOWN:
+            SDL_GetMouseState(&x,&y);
+            if(isInside(x,y,913,970,22,76)) switchState(SELECTMAP);
+            break;
+        default:
+            break;
+        }
+        break;
+    case HIGHSCORE:
         switch(gEvent.type)
         {
         case SDL_MOUSEBUTTONDOWN:
@@ -89,6 +118,7 @@ void Game::handleEvent(){
                 else if(currentLevel == 3) switchState(LEVEL4);
                 else if(currentLevel == 4) switchState(LEVEL5);
                 else if(currentLevel == 5) switchState(LEVEL6);
+                else if(currentLevel == 6) switchState(LEVEL7);
                 else switchState(SELECTMAP);
             }
             break;
@@ -125,6 +155,8 @@ void Game::handleEvent(){
             if(isInside(x,y,450,538,390,490) && maxLevel >= 9) switchState(LEVEL9);
             if(isInside(x,y,914,969,20,76)) switchState(MENU);
             if(isInside(x,y,717,925,553,591)) switchState(GUIDE);
+            if(isInside(x,y,71,241,553,591)) switchState(HIGHSCORE);
+            if(isInside(x,y,440,568,553,591)) switchState(SHOP);
             break;
         default:
             break;
@@ -152,6 +184,32 @@ void Game::handleEvent(){
             break;
         }
         break;
+//    case PAUSE:
+//        switch(gEvent.type)
+//        {
+//        case SDL_MOUSEBUTTONDOWN:
+//            SDL_GetMouseState(&x,&y);
+//            if(isInside(x,y,324,408,292,374))
+//            {
+//                exitState(PAUSE);
+//                switchState(gState);
+//                isPause = false;
+//            }
+//            if(isInside(x,y,454,537,292,374))
+//            {
+//                exitState(PAUSE);
+//                isPause = false;
+//            }
+//            if(isInside(x,y,582,666,292,374))
+//            {
+//                exitState(PAUSE);
+//                switchState(SELECTMAP);
+//            }
+//            break;
+//        default:
+//            break;
+//        }
+//        break;
     default:
         break;
     }
@@ -160,11 +218,18 @@ void Game::renderGame(){
     SDL_RenderClear(gRenderer);
     switch(gState)
     {
+    case SHOP:
+        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+        break;
+    case HIGHSCORE:
+        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+        break;
     case MENU:
     case SELECTMAP:
     case GUIDE:
     case WIN:
     case LOSE:
+    case PAUSE:
     case SETTING:
         SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
         break;
@@ -174,8 +239,20 @@ void Game::renderGame(){
     case LEVEL4:
     case LEVEL5:
     case LEVEL6:
+    case LEVEL7:
         map->DrawMap(camera);
         player->Render();
+        if(lava != nullptr) lava->Render(player->xpos, player->ypos);
+        for (int i = 0; i < 20; i++)
+        {
+            if(coin[i] == nullptr) break;
+            coin[i]->Render(player->xpos, player->ypos);
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if(teleporter[i] == nullptr) break;
+            teleporter[i]->Render(player->xpos, player->ypos);
+        }
         for (int i = 0; i < 20; i++)
         {
             if(bat[i] == nullptr) break;
@@ -211,6 +288,9 @@ void Game::enterState(State id){
     case WIN:
         background = TextureManager::LoadTexture("Assets/State/win.png");
         break;
+    case PAUSE:
+        background = TextureManager::LoadTexture("Assets/State/pause.png");
+        break;
     case MENU:
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/menu_en.png");
         else background = TextureManager::LoadTexture("Assets/State/menu_vn.png");
@@ -223,6 +303,16 @@ void Game::enterState(State id){
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/setting_en.png");
         else background = TextureManager::LoadTexture("Assets/State/setting_vn.png");
         break;
+    case HIGHSCORE:
+        text = new TextManager(15);
+        if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/highscore_en.png");
+        else background = TextureManager::LoadTexture("Assets/State/highscore_vn.png");
+        break;
+    case SHOP:
+        text = new TextManager(25);
+        if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/shope_en.png");
+        else background = TextureManager::LoadTexture("Assets/State/shop_vn.png");
+        break;
     case GUIDE:
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/guide_en.png");
         else background = TextureManager::LoadTexture("Assets/State/guide_vn.png");
@@ -230,6 +320,7 @@ void Game::enterState(State id){
     case LEVEL1:
         Mix_FadeOutMusic(500);
         currentLevel = 1;
+        startTime = SDL_GetTicks();
         map = new Map(currentLevel);
         player = new Player("Assets/Character/spider.png",25,12);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
@@ -249,6 +340,7 @@ void Game::enterState(State id){
         break;
     case LEVEL2:
         Mix_FadeOutMusic(500);
+        startTime = SDL_GetTicks();
         currentLevel = 2;
         map = new Map(currentLevel);
         player = new Player("Assets/Character/spider.png",42,97);
@@ -336,6 +428,7 @@ void Game::enterState(State id){
     case LEVEL3:
         Mix_FadeOutMusic(500);
         currentLevel = 3;
+        startTime = SDL_GetTicks();
         map = new Map(currentLevel);
         player = new Player("Assets/Character/spider.png",52,60);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
@@ -357,9 +450,29 @@ void Game::enterState(State id){
     case LEVEL4:
         Mix_FadeOutMusic(500);
         currentLevel = 4;
+        startTime = SDL_GetTicks();
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/spider.png",50,12);
+        player = new Player("Assets/Character/spider.png",23,43);//50 12
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        teleporter[0] = new Teleporter (30,43);
+        teleporter[1] = new Teleporter (31,46);
+        teleporter[2] = new Teleporter (35,42);
+        teleporter[3] = new Teleporter (34,52);
+        teleporter[4] = new Teleporter (24,51);
+        teleporter[5] = new Teleporter (24,49);
+        teleporter[6] = new Teleporter (22,50);
+        teleporter[7] = new Teleporter (17,51);
+        teleporter[8] = new Teleporter (22,52);
+        teleporter[9] = new Teleporter (24,53);
+        teleporter[10] = new Teleporter (34,58);
+        teleporter[11] = new Teleporter (44,56);
+        teleporter[12] = new Teleporter (31,60);
+        teleporter[13] = new Teleporter (24,58);
+        teleporter[14] = new Teleporter (23,64);
+        teleporter[15] = new Teleporter (34,65);
+        teleporter[16] = new Teleporter (20,71);
+        teleporter[17] = new Teleporter (35,48);
+        teleporter[18] = new Teleporter (20,71);
         bat[0] = new Bat (15,68,1);
         bat[1] = new Bat (18,72,0);
         bomb[0] = new Bomb (25,62,1);
@@ -440,9 +553,12 @@ void Game::enterState(State id){
     case LEVEL5:
         Mix_FadeOutMusic(500);
         currentLevel = 5;
+        startTime = SDL_GetTicks();
         map = new Map(currentLevel);
         player = new Player("Assets/Character/spider.png",37,25);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        teleporter[0] = new Teleporter (22,22);
+        teleporter[1] = new Teleporter (24,22);
         bomb[0] = new Bomb (29,18,3);
         bomb[1] = new Bomb (21,15,2);
         bomb[2] = new Bomb (17,19,3);
@@ -465,17 +581,30 @@ void Game::enterState(State id){
     case LEVEL6:
         Mix_FadeOutMusic(500);
         currentLevel = 6;
+        startTime = SDL_GetTicks();
         map = new Map(currentLevel);
-        player = new Player("Assets/Character/spider.png",19,12);
+        player = new Player("Assets/Character/robin.png",19,12);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        teleporter[0] = new Teleporter (17,18);
+        teleporter[1] = new Teleporter (23,18);
+        coin[0] = new Coin (23,16);
         bomb[0] = new Bomb (29,16,3);
         trap[0] = new Trap (18,23,4);
-        trap[1] = new Trap (19,24,4);
+        trap[1] = new Trap (19,23,4);
         trap[2] = new Trap (23,22,4);
         trap[3] = new Trap (24,22,4);
         trap[4] = new Trap (25,22,4);
         trap[5] = new Trap (26,22,4);
         trap[6] = new Trap (27,22,4);
+        break;
+    case LEVEL7:
+        Mix_FadeOutMusic(500);
+        currentLevel = 7;
+        startTime = SDL_GetTicks();
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/robin.png",15,73);
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        lava = new Lava(0,79);
         break;
     default:
         break;
@@ -487,11 +616,19 @@ void Game::exitState(State id){
     case MENU:
     case SELECTMAP:
     case GUIDE:
+    case PAUSE:
     case WIN:
     case LOSE:
     case SETTING:
         SDL_DestroyTexture(background);
         background = nullptr;
+        break;
+    case HIGHSCORE:
+    case SHOP:
+        SDL_DestroyTexture(background);
+        background = nullptr;
+        delete text;
+        text = nullptr;
         break;
     case LEVEL1:
     case LEVEL2:
@@ -505,10 +642,14 @@ void Game::exitState(State id){
         Mix_FadeInMusic(gMusic,-1,500);
         map = nullptr;
         player = nullptr;
+        lava = nullptr;
+        for (int i = 0; i < 20; i++) coin[i] = nullptr;
         for (int i = 0; i < 24; i++) bomb[i] = nullptr;
         for (int i = 0; i < 7; i++) peak[i] = nullptr;
         for (int i = 0; i < 20; i++) bat[i] = nullptr;
         for (int i = 0; i < 63; i++) trap[i] = nullptr;
+        for (int i = 0; i < 20; i++) coin[i] = nullptr;
+        for (int i = 0; i < 20; i++) teleporter[i] = nullptr;
         break;
     default:
         break;
@@ -524,9 +665,21 @@ void Game::updateGame(int x){
     case LEVEL4:
     case LEVEL5:
     case LEVEL6:
+    case LEVEL7:
         player->Update(camera, player->xpos, player->ypos);
         if(!x)
         {
+            if (lava != nullptr) lava->Update();
+            for (int i = 0; i < 20; i++)
+            {
+                if(coin[i] == nullptr) break;
+                coin[i]->Update();
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                if(teleporter[i] == nullptr) break;
+                teleporter[i]->Update();
+            }
             for (int i = 0; i < 24; i++)
             {
                 if (bomb[i] == nullptr) break;
@@ -546,6 +699,20 @@ void Game::updateGame(int x){
             {
                 if(bat[i] == nullptr) break;
                 bat[i]->Update(map);
+            }
+        }
+//        if(player->Collision(lava->hitbox))
+//        {
+//            isLose = true;
+//            break;
+//        }
+        for (int i = 0; i < 20; i++)
+        {
+            if(coin[i] == nullptr) break;
+            if(player->Collision(coin[i]->hitbox) && !coin[i]->collected)
+            {
+                coin[i]->collected = true;
+                gCoin++;
             }
         }
         for (int i = 0; i < 24; i++)
@@ -598,7 +765,14 @@ void Game::updateGame(int x){
         break;
     }
     if(isLose) {switchState(LOSE); isLose = false;}
-    if(isWin) {switchState(WIN); isWin = false;}
+    if(isWin)
+    {
+        int temp = SDL_GetTicks() - startTime;
+        highScore[currentLevel-1] = temp > highScore[currentLevel-1] ? temp : highScore[currentLevel-1];
+        isWin = false;
+        switchState(WIN);
+    }
+//    if(isPause) {enterState(PAUSE);}
 }
 
 
@@ -719,18 +893,29 @@ void Game::initGame()
     Mix_PlayMusic(gMusic,-1);
     gRenderer = SDL_CreateRenderer(gWindow,-1,0);
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
+    // Export save game file //
     std::ifstream file("Assets/savegame.txt");
     file >> isEnglish;
     file >> maxLevel;
+    file >> gCoin;
+    for (int i = 0; i < 9; i++) file >> highScore[i];
     file.close();
     enterState(gState);
 }
 void Game::closeGame()
 {
+    // Import save game file //
     std::ofstream file("Assets/savegame.txt");
     file << isEnglish;
     file << " ";
     file << maxLevel;
+    file << " ";
+    file << gCoin;
+    for (int i = 0; i < 9; i++)
+    {
+        file << " ";
+        file << highScore[i];
+    }
     file.close();
 	SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;

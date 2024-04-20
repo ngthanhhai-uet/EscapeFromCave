@@ -17,6 +17,7 @@ public:
     int frame = 0;
     int typeBat;
     SDL_Rect hitbox;
+    SDL_Rect animation;
     SDL_Texture* batTexture;
 };
 #endif

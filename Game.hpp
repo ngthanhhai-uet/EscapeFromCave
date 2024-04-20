@@ -19,11 +19,19 @@ public:
     void updateGame(int x);
     void renderGame();
     void closeGame();
+    // - Temporatory varible - //
     bool isRunning;
-    bool isEnglish;
     bool isLose = false;
     bool isWin = false;
+    bool isPause = false;
+    int startTime;
+    int currentLevel;
     bool changeState;
+    // - Save varible - //
+    bool isEnglish;
+    int maxLevel;
+    int gCoin;
+    int highScore[9];
     bool isInside(int x, int y, int x1, int x2, int y1, int y2);
     enum State
     {
@@ -31,6 +39,8 @@ public:
         SELECTMAP,
         SETTING,
         GUIDE,
+        SHOP,
+        HIGHSCORE,
         LEVEL1,
         LEVEL2,
         LEVEL3,
@@ -48,8 +58,6 @@ public:
     void enterState(State id);
     void exitState(State id);
     void switchState(State id);
-    int maxLevel;
-    int currentLevel = 1;
     SDL_Window* gWindow;
     static SDL_Renderer* gRenderer;
 };
