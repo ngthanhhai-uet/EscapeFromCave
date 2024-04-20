@@ -219,10 +219,28 @@ void Game::renderGame(){
     switch(gState)
     {
     case SHOP:
-        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+        {
+            SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+            std::string temp = std::to_string(gCoin);
+            text->Render(temp.c_str(), 123, 86);
+        }
         break;
     case HIGHSCORE:
-        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+        {
+            SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+            std::string temp = std::to_string(highScore[0]);
+            text->Render(temp.c_str(), 487, 307);
+            temp = std::to_string(highScore[1]);
+            text->Render(temp.c_str(), 487, 363);
+            temp = std::to_string(highScore[2]);
+            text->Render(temp.c_str(), 487, 415);
+            temp = std::to_string(highScore[3]);
+            text->Render(temp.c_str(), 487, 471);
+            temp = std::to_string(highScore[4]);
+            text->Render(temp.c_str(), 487, 525);
+            temp = std::to_string(highScore[5]);
+            text->Render(temp.c_str(), 487, 578);
+        }
         break;
     case MENU:
     case SELECTMAP:
@@ -276,6 +294,12 @@ void Game::renderGame(){
             if(bomb[i] == nullptr) break;
             bomb[i]->Render(player->xpos, player->ypos);
         }
+        {
+            std::string temp = std::to_string(gCoin);
+            text->Render(temp.c_str(), 50, 90);
+            temp = std::to_string(SDL_GetTicks()-startTime);
+            text->Render(temp.c_str(), 50, 50);
+        }
         break;
     default:
         break;
@@ -307,7 +331,7 @@ void Game::enterState(State id){
         else background = TextureManager::LoadTexture("Assets/State/setting_vn.png");
         break;
     case HIGHSCORE:
-        text = new TextManager(15);
+        text = new TextManager(25);
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/highscore_en.png");
         else background = TextureManager::LoadTexture("Assets/State/highscore_vn.png");
         break;
@@ -321,6 +345,7 @@ void Game::enterState(State id){
         else background = TextureManager::LoadTexture("Assets/State/guide_vn.png");
         break;
     case LEVEL1:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 1;
         startTime = SDL_GetTicks();
@@ -342,6 +367,7 @@ void Game::enterState(State id){
         trap[9] = new Trap (23,42,4);
         break;
     case LEVEL2:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         startTime = SDL_GetTicks();
         currentLevel = 2;
@@ -429,6 +455,7 @@ void Game::enterState(State id){
         trap[58] = new Trap (43,63,4);
         break;
     case LEVEL3:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 3;
         startTime = SDL_GetTicks();
@@ -451,6 +478,7 @@ void Game::enterState(State id){
         bomb[13] = new Bomb (34,12,3);
         break;
     case LEVEL4:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 4;
         startTime = SDL_GetTicks();
@@ -554,6 +582,7 @@ void Game::enterState(State id){
         trap[62] = new Trap (55,19,2);
         break;
     case LEVEL5:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 5;
         startTime = SDL_GetTicks();
@@ -582,6 +611,7 @@ void Game::enterState(State id){
         trap[14] = new Trap (17,22,4);
         break;
     case LEVEL6:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 6;
         startTime = SDL_GetTicks();
@@ -601,6 +631,7 @@ void Game::enterState(State id){
         trap[6] = new Trap (27,22,4);
         break;
     case LEVEL7:
+        text = new TextManager(35);
         Mix_FadeOutMusic(500);
         currentLevel = 7;
         startTime = SDL_GetTicks();
@@ -642,6 +673,7 @@ void Game::exitState(State id){
     case LEVEL7:
     case LEVEL8:
     case LEVEL9:
+        text = nullptr;
         Mix_FadeInMusic(gMusic,-1,500);
         map = nullptr;
         player = nullptr;
@@ -771,7 +803,10 @@ void Game::updateGame(int x){
     if(isWin)
     {
         int temp = SDL_GetTicks() - startTime;
-        highScore[currentLevel-1] = temp > highScore[currentLevel-1] ? temp : highScore[currentLevel-1];
+        if(temp > highScore[currentLevel-1])
+        {
+            highScore[currentLevel-1] = temp;
+        }
         isWin = false;
         switchState(WIN);
     }
