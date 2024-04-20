@@ -2,7 +2,7 @@
 ## GIỚI THIỆU:
 + Họ và tên: Nguyễn Thanh Hải
 + Mã số sinh viên: 23020057 / Trường Đại học Công nghệ - Đại học Quốc gia Hà Nội
-+ Đây là bài tập lớn được giảng viên học phần Lập trình nâng cao INT2215 đưa ra
++ Đây là bài tập lớn được giảng viên học phần Lập Trình Nâng Cao INT2215 đưa ra
 ## Ý TƯỞNG:
 Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật cản bất lợi của trò chơi Geometry Dash viết bằng ngôn ngữ lập trình C++ và sử dụng thư viện SDL
 ## SETUP:
@@ -15,7 +15,7 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 ## DEMO:
 + Video:
 ## NHỮNG KIẾN THỨC ĐÃ SỬ DỤNG
-+ Mảng tĩnh, mảng động
++ Vòng lặp, mảng tĩnh, mảng động, xâu
 + Sử dụng lớp, cấu trúc
 + Sử dụng constructor & destructor
 + Nạp chồng toán tử
@@ -23,7 +23,7 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 + Chia ra các thư mục assest, src,...
 + Chia ra các file .cpp và .hpp để dễ dàng quản lí dự án
 + Sử dụng kiến thức toán học để tính toạ độ
-+ Sử dụng kĩ thuật tilemap để tạo ra nhiều bản đồ khác nhau
++ Sử dụng kĩ thuật Tilemap để tạo ra nhiều bản đồ khác nhau
 + Xuất/nhập file để đọc map, lưu tiến trình trò chơi
 + Xử lí va chạm giữa người chơi và vật thể, vật thể và vật thể khác
 + Kỹ thuật Scrolling View
@@ -36,7 +36,7 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 + SDL2.0 Wiki: https://www.libsdl.org
 + ChatGPT4: https://chat.openai.com
 + Let's Make Game: https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=3 (help me how to making a game loop and some basic things about SDL)
-### *Đồ hoạ*: 
+### *Đồ hoạ*:
 + Khoảng 40% đồ hoạ trong trò chơi này lấy từ: https://itch.io
 + Thiết kế thêm hoặc bổ sung đồ hoạ bằng: https://www.aseprite.org/
 + Toàn bộ giao diện sảnh tự thiết kế bằng: https://www.canva.com
@@ -46,8 +46,9 @@ Dựa trên góc nhìn của trò chơi Pacman và lối chơi né tránh vật 
 + Khi nhân vật trong trại thái di chuyển, các vật thể động như Bat hoặc Bomb đều sẽ bị delay kha khá nếu bạn để ý.
 ## CÁC TÍNH NĂNG TRONG TƯƠNG LAI:
 + Các bản đồ mới
-+ Vật thể mới, đặc biệt là bot tự động tìm người chơi
++ Vật thể mới, đặc biệt là bot tự động tìm người chơi sử dụng thuật toán tìm đường đi ngắn nhất
 + Các trang phục nhân vật mới
++ Cửa hàng
 ## LIÊN HỆ:
 + 💩 Github: https://github.com/ngthanhhai-uet
 + 💩 Facebook: https://www.facebook.com/ngthanhhai.official
