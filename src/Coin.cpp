@@ -1,6 +1,6 @@
 #include "Coin.hpp"
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 Coin::Coin(int x, int y)
 {
     x *= 32;

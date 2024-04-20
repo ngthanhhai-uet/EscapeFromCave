@@ -1,4 +1,3 @@
-
 #ifndef TextureManager_hpp
 #define TextureManager_hpp
 #include <iostream>

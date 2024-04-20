@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../src/Game.hpp"
 #include "TextManager.hpp"
 
 TextManager::TextManager(int fontSize) {

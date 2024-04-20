@@ -1,6 +1,6 @@
 #include "Game.hpp"
 #include "Map.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 #include "Player.hpp"
 
 Player::Player(const char* pngfile, int x, int y)

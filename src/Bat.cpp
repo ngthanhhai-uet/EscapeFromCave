@@ -1,8 +1,7 @@
 #include "Game.hpp"
 #include "Bat.hpp"
 #include "Map.hpp"
-#include "TextureManager.hpp"
-#include "Player.hpp"
+#include "../manager/TextureManager.hpp"
 
 Bat::Bat(int x, int y, int type)
 {

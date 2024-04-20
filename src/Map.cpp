@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include "Bat.hpp"
 #include "Map.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 #include "Player.hpp"
 Map::Map(int level)
 {

@@ -1,6 +1,6 @@
 #include "Peak.hpp"
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 Peak::Peak(int x, int y)
 {
     x *= 32;

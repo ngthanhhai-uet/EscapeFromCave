@@ -1,16 +1,18 @@
 #include "Game.hpp"
 #include "Bat.hpp"
 #include "Map.hpp"
-#include "TextureManager.hpp"
 #include "Player.hpp"
 #include "Bomb.hpp"
 #include "Peak.hpp"
 #include "Trap.hpp"
 #include "Coin.hpp"
 #include "Lava.hpp"
-#include "TextManager.hpp"
 #include "Teleporter.hpp"
+#include "../manager/TextManager.hpp"
+#include "../manager/TextureManager.hpp"
+
 #include <string>
+
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;

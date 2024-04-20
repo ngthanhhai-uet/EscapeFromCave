@@ -1,6 +1,6 @@
 #include "Lava.hpp"
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 Lava::Lava(int x, int y)
 {
     x *= 32;

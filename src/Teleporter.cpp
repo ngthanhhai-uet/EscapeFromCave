@@ -1,6 +1,7 @@
 #include "Teleporter.hpp"
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
+
 Teleporter::Teleporter(int x, int y)
 {
     x *= 32;

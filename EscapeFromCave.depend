@@ -168,3 +168,165 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
+1713275879 source:x:\escapefromcave\src\main.cpp
+	"Game.hpp"
+
+1713652596 x:\escapefromcave\src\game.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<fstream>
+
+1713654358 source:x:\escapefromcave\manager\textmanager.cpp
+	"../src/Game.hpp"
+	"TextManager.hpp"
+
+1713640752 x:\escapefromcave\manager\textmanager.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<string>
+
+1713654358 source:x:\escapefromcave\manager\texturemanager.cpp
+	"../src/Game.hpp"
+	"TextureManager.hpp"
+
+1713654358 x:\escapefromcave\manager\texturemanager.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713654358 source:x:\escapefromcave\src\bat.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+
+1713642906 x:\escapefromcave\src\bat.hpp
+	<iostream>
+	"Map.hpp"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713642408 x:\escapefromcave\src\map.hpp
+	<iostream>
+	<fstream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<vector>
+	<string>
+
+1713654358 source:x:\escapefromcave\src\bomb.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"Player.hpp"
+	"Bomb.hpp"
+	"../manager/TextureManager.hpp"
+
+1713438204 x:\escapefromcave\src\player.hpp
+	"Game.hpp"
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713642922 x:\escapefromcave\src\bomb.hpp
+	<iostream>
+	"Map.hpp"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713654358 source:x:\escapefromcave\src\coin.cpp
+	"Coin.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713642794 x:\escapefromcave\src\coin.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713654392 source:x:\escapefromcave\src\game.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"Player.hpp"
+	"Bomb.hpp"
+	"Peak.hpp"
+	"Trap.hpp"
+	"Coin.hpp"
+	"Lava.hpp"
+	"Teleporter.hpp"
+	"../manager/TextManager.hpp"
+	"../manager/TextureManager.hpp"
+	<string>
+
+1713642668 x:\escapefromcave\src\peak.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713642479 x:\escapefromcave\src\trap.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713642741 x:\escapefromcave\src\lava.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713642589 x:\escapefromcave\src\teleporter.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713654501 source:x:\escapefromcave\src\trap.cpp
+	"Game.hpp"
+	"Trap.hpp"
+	"../manager/TextureManager.hpp"
+
+1713654506 source:x:\escapefromcave\src\lava.cpp
+	"Lava.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713654513 source:x:\escapefromcave\src\map.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+	"Player.hpp"
+
+1713654518 source:x:\escapefromcave\src\peak.cpp
+	"Peak.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713654525 source:x:\escapefromcave\src\teleporter.cpp
+	"Teleporter.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+

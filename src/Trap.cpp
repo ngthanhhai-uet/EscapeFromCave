@@ -1,6 +1,6 @@
 #include "Game.hpp"
 #include "Trap.hpp"
-#include "TextureManager.hpp"
+#include "../manager/TextureManager.hpp"
 
 Trap::Trap(int x, int y, int type)
 {
