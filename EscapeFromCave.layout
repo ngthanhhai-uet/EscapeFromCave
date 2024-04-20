@@ -2,14 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Map.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Game.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="243" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Trap.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="190" topLine="0" />
+			<Cursor1 position="1053" topLine="17" />
 		</Cursor>
 	</File>
 	<File name="TextureManager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -17,29 +12,14 @@
 			<Cursor1 position="469" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Game.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="25042" topLine="662" />
-		</Cursor>
-	</File>
-	<File name="Coin.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Coin.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="297" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Bomb.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="TextManager.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="242" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Bat.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="227" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Map.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="256" topLine="0" />
+			<Cursor1 position="453" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Trap.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -47,9 +27,19 @@
 			<Cursor1 position="528" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="Lava.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Peak.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="447" topLine="0" />
+			<Cursor1 position="424" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="461" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Bomb.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="531" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Peak.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -57,9 +47,14 @@
 			<Cursor1 position="192" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="TextManager.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="Map.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="344" topLine="0" />
+			<Cursor1 position="256" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Lava.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="447" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Bat.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -67,14 +62,29 @@
 			<Cursor1 position="369" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Teleporter.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Coin.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="222" topLine="0" />
+			<Cursor1 position="155" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="TextManager.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="461" topLine="0" />
+			<Cursor1 position="344" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Trap.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="190" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Player.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="758" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Teleporter.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="222" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Teleporter.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -87,19 +97,24 @@
 			<Cursor1 position="591" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Coin.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Bomb.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="155" topLine="0" />
+			<Cursor1 position="177" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Bomb.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Map.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="531" topLine="0" />
+			<Cursor1 position="243" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="TextManager.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="Game.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="453" topLine="0" />
+			<Cursor1 position="7934" topLine="209" />
+		</Cursor>
+	</File>
+	<File name="Bat.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="227" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Lava.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -107,20 +122,5 @@
 			<Cursor1 position="192" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Game.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="250" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="Peak.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="424" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Player.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="264" topLine="0" />
-		</Cursor>
-	</File>
-	<EditorTabsLayout layout="07d6fcf06624056e000019e400000002=*0;EscapeFromCave:Game.cpp,1;EscapeFromCave:Game.hpp,2;EscapeFromCave:main.cpp,3;EscapeFromCave:Player.cpp,4;EscapeFromCave:Coin.cpp,5;EscapeFromCave:Bomb.hpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=856;besth=380;minw=856;minh=380;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=07d6fcf06624056e000019e400000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<EditorTabsLayout layout="07d52fc066243f790000123800000002=*0;EscapeFromCave:Game.cpp,1;EscapeFromCave:Game.hpp,2;EscapeFromCave:Player.cpp,3;EscapeFromCave:Teleporter.hpp,4;EscapeFromCave:TextManager.hpp,5;EscapeFromCave:TextManager.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=818;besth=458;minw=818;minh=458;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=07d52fc066243f790000123800000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>

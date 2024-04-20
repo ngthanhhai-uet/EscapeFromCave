@@ -10,7 +10,8 @@ Player::Player(const char* pngfile, int x, int y)
     playerTexture = TextureManager::LoadTexture(pngfile);
     xpos = x; ypos = y;
 }
-Player::~Player() {
+Player::~Player()
+{
     if (playerTexture != nullptr) {
         SDL_DestroyTexture(playerTexture);
         playerTexture = nullptr;
@@ -26,7 +27,7 @@ void Player::Handle(SDL_Event e, Game* game, Map *map)
     switch(e.key.keysym.sym)
     {
     case SDLK_ESCAPE:
-        game->isLose = true;
+        game->isPause = true;
         break;
     case SDLK_DOWN:
         flip = SDL_FLIP_NONE; degrees = +90;

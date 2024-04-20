@@ -53,7 +53,6 @@ public:
         LEVEL9,
         LOSE,
         WIN,
-        PAUSE,
     };
     State gState = MENU;
     void enterState(State id);

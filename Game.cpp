@@ -15,7 +15,6 @@ Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
 SDL_Texture* background;
-SDL_Texture* message;
 Mix_Music* gMusic = NULL;
 Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
@@ -35,6 +34,29 @@ void Game::handleEvent(){
     SDL_PollEvent(&gEvent);
 	if(gEvent.type == SDL_QUIT) isRunning = false;
 	int x, y;
+	if(isPause)
+    {
+        switch(gEvent.type)
+        {
+        case SDL_MOUSEBUTTONDOWN:
+            SDL_GetMouseState(&x,&y);
+            if(isInside(x,y,324,408,292,374)) // Reset //
+            {
+                switchState(gState);
+                isPause = false;
+            }
+            if(isInside(x,y,454,537,292,374)) isPause = false; // Continue //
+            if(isInside(x,y,582,666,292,374)) // Quit //
+            {
+                switchState(SELECTMAP);
+                isPause = false;
+            }
+            break;
+        default:
+            break;
+        }
+        return;
+    }
 	switch(gState)
 	{
     case LEVEL1:
@@ -184,38 +206,19 @@ void Game::handleEvent(){
             break;
         }
         break;
-//    case PAUSE:
-//        switch(gEvent.type)
-//        {
-//        case SDL_MOUSEBUTTONDOWN:
-//            SDL_GetMouseState(&x,&y);
-//            if(isInside(x,y,324,408,292,374))
-//            {
-//                exitState(PAUSE);
-//                switchState(gState);
-//                isPause = false;
-//            }
-//            if(isInside(x,y,454,537,292,374))
-//            {
-//                exitState(PAUSE);
-//                isPause = false;
-//            }
-//            if(isInside(x,y,582,666,292,374))
-//            {
-//                exitState(PAUSE);
-//                switchState(SELECTMAP);
-//            }
-//            break;
-//        default:
-//            break;
-//        }
-//        break;
     default:
         break;
     }
 }
 void Game::renderGame(){
     SDL_RenderClear(gRenderer);
+    if(isPause)
+    {
+        background = TextureManager::LoadTexture("Assets/State/pause.png");
+        SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
+        SDL_RenderPresent(gRenderer);
+        return;
+    }
     switch(gState)
     {
     case SHOP:
@@ -245,7 +248,6 @@ void Game::renderGame(){
     case MENU:
     case SELECTMAP:
     case GUIDE:
-    case PAUSE:
     case SETTING:
         SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
         break;
@@ -333,9 +335,6 @@ void Game::enterState(State id){
     case WIN:
         text = new TextManager(37);
         background = TextureManager::LoadTexture("Assets/State/win.png");
-        break;
-    case PAUSE:
-        background = TextureManager::LoadTexture("Assets/State/pause.png");
         break;
     case MENU:
         if (isEnglish == true) background = TextureManager::LoadTexture("Assets/State/menu_en.png");
@@ -669,7 +668,6 @@ void Game::exitState(State id){
     case MENU:
     case SELECTMAP:
     case GUIDE:
-    case PAUSE:
     case SETTING:
         SDL_DestroyTexture(background);
         background = nullptr;
@@ -710,7 +708,7 @@ void Game::exitState(State id){
     }
 }
 void Game::updateGame(int x){
-
+    if(isPause) return;
     switch(gState)
     {
     case LEVEL1:
@@ -830,7 +828,6 @@ void Game::updateGame(int x){
         isWin = false;
         switchState(WIN);
     }
-//    if(isPause) {enterState(PAUSE);}
 }
 
 

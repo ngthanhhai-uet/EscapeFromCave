@@ -57,8 +57,12 @@
 		<Unit filename="Game.hpp">
 			<Option virtualFolder="Main/" />
 		</Unit>
-		<Unit filename="Lava.cpp" />
-		<Unit filename="Lava.hpp" />
+		<Unit filename="Lava.cpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
+		<Unit filename="Lava.hpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
 		<Unit filename="Map.cpp">
 			<Option virtualFolder="Object/" />
 		</Unit>
@@ -77,8 +81,12 @@
 		<Unit filename="Player.hpp">
 			<Option virtualFolder="Object/" />
 		</Unit>
-		<Unit filename="Teleporter.cpp" />
-		<Unit filename="Teleporter.hpp" />
+		<Unit filename="Teleporter.cpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
+		<Unit filename="Teleporter.hpp">
+			<Option virtualFolder="Object/" />
+		</Unit>
 		<Unit filename="TextManager.cpp">
 			<Option virtualFolder="Manager/" />
 		</Unit>
