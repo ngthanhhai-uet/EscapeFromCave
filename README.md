@@ -1,4 +1,4 @@
-![ezgif-6-ccc2aeb765](https://github.com/ngthanhhai-uet/EscapeFromCave/assets/148655084/bcd4254f-1453-4d73-818d-8af5a4009bd6)# **ESCAPE FROM CAVE - ngthanhhai**
+# **ESCAPE FROM CAVE - ngthanhhai**
 ## THÔNG TIN
 **Họ và tên** : `Nguyễn Thanh Hải`
 
