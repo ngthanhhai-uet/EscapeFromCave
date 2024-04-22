@@ -34,7 +34,7 @@ void Trap::Render(int x, int y)
 {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     SDL_Rect temp = {xTrap - x + 480, yTrap - y + 320, 32, 32};
-    if(activated)
+    if(activated && SDL_GetTicks()-activatedTime > 200)
     {
         if(typeTrap == 1) SDL_RenderCopyEx(Game::gRenderer, trapon, nullptr, &temp, 90 ,nullptr, flip);
         if(typeTrap == 2) SDL_RenderCopyEx(Game::gRenderer, trapon, nullptr, &temp, 270 ,nullptr, flip);

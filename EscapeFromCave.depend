@@ -168,18 +168,19 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1713275879 source:x:\escapefromcave\src\main.cpp
+1713730507 source:x:\escapefromcave\src\main.cpp
 	"Game.hpp"
 
-1713655354 x:\escapefromcave\src\game.hpp
+1713748497 x:\escapefromcave\src\game.hpp
 	<iostream>
 	<fstream>
+	<string>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1713654358 source:x:\escapefromcave\manager\textmanager.cpp
+1713662709 source:x:\escapefromcave\manager\textmanager.cpp
 	"../src/Game.hpp"
 	"TextManager.hpp"
 
@@ -189,7 +190,7 @@
 	<SDL.h>
 	<SDL_ttf.h>
 
-1713654358 source:x:\escapefromcave\manager\texturemanager.cpp
+1713711307 source:x:\escapefromcave\manager\texturemanager.cpp
 	"../src/Game.hpp"
 	"TextureManager.hpp"
 
@@ -218,15 +219,13 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1713654358 source:x:\escapefromcave\src\bomb.cpp
+1713750019 source:x:\escapefromcave\src\bomb.cpp
 	"Game.hpp"
-	"Bat.hpp"
 	"Map.hpp"
-	"Player.hpp"
 	"Bomb.hpp"
 	"../manager/TextureManager.hpp"
 
-1713655354 x:\escapefromcave\src\player.hpp
+1713744245 x:\escapefromcave\src\player.hpp
 	"Game.hpp"
 	<iostream>
 	<SDL.h>
@@ -238,7 +237,7 @@
 	<SDL_image.h>
 	"Map.hpp"
 
-1713654358 source:x:\escapefromcave\src\coin.cpp
+1713661614 source:x:\escapefromcave\src\coin.cpp
 	"Coin.hpp"
 	"Game.hpp"
 	"../manager/TextureManager.hpp"
@@ -248,7 +247,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1713654392 source:x:\escapefromcave\src\game.cpp
+1713749043 source:x:\escapefromcave\src\game.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
@@ -261,7 +260,6 @@
 	"Teleporter.hpp"
 	"../manager/TextManager.hpp"
 	"../manager/TextureManager.hpp"
-	<string>
 
 1713655354 x:\escapefromcave\src\peak.hpp
 	<iostream>
@@ -288,19 +286,17 @@
 	"Trap.hpp"
 	"../manager/TextureManager.hpp"
 
-1713654506 source:x:\escapefromcave\src\lava.cpp
+1713743287 source:x:\escapefromcave\src\lava.cpp
 	"Lava.hpp"
 	"Game.hpp"
 	"../manager/TextureManager.hpp"
 
-1713654513 source:x:\escapefromcave\src\map.cpp
+1713655516 source:x:\escapefromcave\src\map.cpp
 	"Game.hpp"
-	"Bat.hpp"
 	"Map.hpp"
 	"../manager/TextureManager.hpp"
-	"Player.hpp"
 
-1713654518 source:x:\escapefromcave\src\peak.cpp
+1713731845 source:x:\escapefromcave\src\peak.cpp
 	"Peak.hpp"
 	"Game.hpp"
 	"../manager/TextureManager.hpp"
@@ -310,7 +306,7 @@
 	"Game.hpp"
 	"../manager/TextureManager.hpp"
 
-1713654529 source:x:\escapefromcave\src\player.cpp
+1713749043 source:x:\escapefromcave\src\player.cpp
 	"Game.hpp"
 	"Map.hpp"
 	"../manager/TextureManager.hpp"

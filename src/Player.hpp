@@ -19,6 +19,7 @@ public:
     double degrees;
     SDL_RendererFlip flip;
     // Render //
+    SDL_Rect animation;
     SDL_Texture* playerTexture;
 };
 #endif

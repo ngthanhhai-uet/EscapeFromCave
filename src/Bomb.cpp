@@ -12,7 +12,7 @@ Bomb::Bomb(int x, int y, int type)
 }
 Bomb::~Bomb()
 {
-    if(bombTexture)
+    if(bombTexture != nullptr)
     {
         SDL_DestroyTexture(bombTexture);
         bombTexture = nullptr;
@@ -24,7 +24,7 @@ void Bomb::Update(Map* map)
     {
         if(wait)
         {
-            if (SDL_GetTicks() - lastTime > 2000)
+            if (SDL_GetTicks() - lastTime > 1500)
             {
                 xBomb = xStart;
                 yBomb = yStart;
@@ -38,7 +38,7 @@ void Bomb::Update(Map* map)
                 wait = true;
                 lastTime = SDL_GetTicks();
             }
-            xBomb += 4;
+            xBomb += 6;
             hitbox.x = xBomb;
         }
     }
@@ -46,7 +46,7 @@ void Bomb::Update(Map* map)
     {
         if(wait)
         {
-            if (SDL_GetTicks() - lastTime > 2000)
+            if (SDL_GetTicks() - lastTime > 1500)
             {
                 xBomb = xStart;
                 yBomb = yStart;
@@ -60,7 +60,7 @@ void Bomb::Update(Map* map)
                 wait = true;
                 lastTime = SDL_GetTicks();
             }
-            xBomb -= 4;
+            xBomb -= 6;
             hitbox.x = xBomb;
         }
     }
@@ -68,7 +68,7 @@ void Bomb::Update(Map* map)
     {
         if(wait)
         {
-            if (SDL_GetTicks() - lastTime > 2000)
+            if (SDL_GetTicks() - lastTime > 1500)
             {
                 xBomb = xStart;
                 yBomb = yStart;
@@ -82,7 +82,7 @@ void Bomb::Update(Map* map)
                 wait = true;
                 lastTime = SDL_GetTicks();
             }
-            yBomb += 4;
+            yBomb += 6;
             hitbox.y = yBomb;
         }
     }
@@ -90,7 +90,7 @@ void Bomb::Update(Map* map)
     {
         if(wait)
         {
-            if (SDL_GetTicks() - lastTime > 2000)
+            if (SDL_GetTicks() - lastTime > 1500)
             {
                 xBomb = xStart;
                 yBomb = yStart;
@@ -104,7 +104,7 @@ void Bomb::Update(Map* map)
                 wait = true;
                 lastTime = SDL_GetTicks();
             }
-            yBomb -= 4;
+            yBomb -= 6;
             hitbox.y = yBomb;
         }
     }

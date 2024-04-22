@@ -38,12 +38,12 @@ void Peak::Update()
     if(activated)
     {
         onTime += deltaTime();
-        if(onTime >= 2000) { activated = false; onTime = 0; }
+        if(onTime >= 1500) { activated = false; onTime = 0; }
     }
     else
     {
         offTime += deltaTime();
-        if(offTime >= 3000) { activated = true; offTime = 0; }
+        if(offTime >= 1000) { activated = true; offTime = 0; }
     }
 }
 void Peak::Render(int x, int y)

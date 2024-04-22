@@ -23,7 +23,7 @@ Lava::~Lava()
 }
 void Lava::Update()
 {
-    yLava -= 4;
+    yLava -= 2;
     hitbox.y = yLava;
 }
 void Lava::Render(int x, int y)

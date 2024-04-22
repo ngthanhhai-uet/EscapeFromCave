@@ -2,6 +2,7 @@
 #define Game_hpp
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -60,5 +61,12 @@ public:
     void switchState(State id);
     SDL_Window* gWindow;
     static SDL_Renderer* gRenderer;
+    Mix_Chunk* gChunk1; // beep //
+    Mix_Chunk* gChunk2; // trampoline //
+    Mix_Chunk* gChunk3; // coin //
+    Mix_Chunk* gChunk4; // win //
+    Mix_Chunk* gChunk5; // tele //
+    Mix_Chunk* gChunk6; // death by spike //
+    Mix_Chunk* gChunk7; // death by bomb? //
 };
 #endif

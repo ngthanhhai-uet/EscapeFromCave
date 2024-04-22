@@ -10,22 +10,20 @@
 #include "Teleporter.hpp"
 #include "../manager/TextManager.hpp"
 #include "../manager/TextureManager.hpp"
-#include <string>
 
 Game::Game(){}
 Game::~Game(){}
 SDL_Renderer* Game::gRenderer = nullptr;
 SDL_Texture* background;
 Mix_Music* gMusic = NULL;
-Mix_Chunk* gChunk1 = NULL;
 TextManager* text;
 Map* map;
 Player* player;
 Bat* bat[20];
-Bomb* bomb[24];
-Peak* peak[7];
+Bomb* bomb[25];
+Peak* peak[10];
 Trap* trap[65];
-Coin* coin[20];
+Coin* coin[50];
 Lava* lava;
 Teleporter *teleporter[20];
 SDL_Rect camera;
@@ -43,12 +41,18 @@ void Game::handleEvent(){
             SDL_GetMouseState(&x,&y);
             if(isInside(x,y,324,408,292,374)) // Reset //
             {
+                Mix_PlayChannel(-1,gChunk1,0);
                 switchState(gState);
                 isPause = false;
             }
-            if(isInside(x,y,454,537,292,374)) isPause = false; // Continue //
+            if(isInside(x,y,454,537,292,374))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                isPause = false;
+            } // Continue //
             if(isInside(x,y,582,666,292,374)) // Quit //
             {
+                Mix_PlayChannel(-1,gChunk1,0);
                 switchState(SELECTMAP);
                 isPause = false;
             }
@@ -76,7 +80,11 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,913,970,22,76)) switchState(SELECTMAP);
+            if(isInside(x,y,913,970,22,76))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
             break;
         default:
             break;
@@ -87,7 +95,11 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,913,970,22,76)) switchState(SELECTMAP);
+            if(isInside(x,y,913,970,22,76))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
             break;
         default:
             break;
@@ -98,7 +110,11 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,913,970,22,76)) switchState(SELECTMAP);
+            if(isInside(x,y,913,970,22,76))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
             break;
         default:
             break;
@@ -109,18 +125,58 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if (isInside(x,y,528,613,430,518)) switchState(SELECTMAP);
+            if (isInside(x,y,528,613,430,518))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
             if (isInside(x,y,380,465,430,518))
             {
-                if(currentLevel == 1) switchState(LEVEL1);
-                else if(currentLevel == 2) switchState(LEVEL2);
-                else if(currentLevel == 3) switchState(LEVEL3);
-                else if(currentLevel == 4) switchState(LEVEL4);
-                else if(currentLevel == 5) switchState(LEVEL5);
-                else if(currentLevel == 6) switchState(LEVEL6);
-                else if(currentLevel == 7) switchState(LEVEL7);
-                else if(currentLevel == 8) switchState(LEVEL8);
-                else if(currentLevel == 9) switchState(LEVEL9);
+                if(currentLevel == 1)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL1);
+                }
+                else if(currentLevel == 2)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL2);
+                }
+                else if(currentLevel == 3)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL3);
+                }
+                else if(currentLevel == 4)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL4);
+                }
+                else if(currentLevel == 5)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL5);
+                }
+                else if(currentLevel == 6)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL6);
+                }
+                else if(currentLevel == 7)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL7);
+                }
+                else if(currentLevel == 8)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL8);
+                }
+                else if(currentLevel == 9)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL9);
+                }
             }
             break;
         default:
@@ -133,16 +189,48 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if (isInside(x,y,528,613,430,518)) switchState(SELECTMAP);
+            if (isInside(x,y,528,613,430,518))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
             if (isInside(x,y,380,465,430,518))
             {
-                if(currentLevel == 1) switchState(LEVEL2);
-                else if(currentLevel == 2) switchState(LEVEL3);
-                else if(currentLevel == 3) switchState(LEVEL4);
-                else if(currentLevel == 4) switchState(LEVEL5);
-                else if(currentLevel == 5) switchState(LEVEL6);
-                else if(currentLevel == 6) switchState(LEVEL7);
-                else switchState(SELECTMAP);
+                if(currentLevel == 1)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL2);
+                }
+                else if(currentLevel == 2)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL3);
+                }
+                else if(currentLevel == 3)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL4);
+                }
+                else if(currentLevel == 4)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL5);
+                }
+                else if(currentLevel == 5)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL6);
+                }
+                else if(currentLevel == 6)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL7);
+                }
+                else
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(SELECTMAP);
+                }
             }
             break;
         default:
@@ -154,9 +242,21 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,353,639,288,377)) switchState(SELECTMAP);
-            if(isInside(x,y,353,639,401,489)) switchState(SETTING);
-            if(isInside(x,y,353,639,514,603)) isRunning = false;
+            if(isInside(x,y,353,639,288,377))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SELECTMAP);
+            }
+            if(isInside(x,y,353,639,401,489))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SETTING);
+            }
+            if(isInside(x,y,353,639,514,603))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                isRunning = false;
+            }
             break;
         default:
             break;
@@ -168,18 +268,66 @@ void Game::handleEvent(){
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
             if(isInside(x,y,337,426,181,289))switchState(LEVEL1);
-            if(isInside(x,y,450,538,181,279) && maxLevel >= 2) switchState(LEVEL2);
-            if(isInside(x,y,562,651,181,279) && maxLevel >= 3) switchState(LEVEL3);
-            if(isInside(x,y,282,371,290,388) && maxLevel >= 4) switchState(LEVEL4);
-            if(isInside(x,y,395,483,290,388) && maxLevel >= 5) switchState(LEVEL5);
-            if(isInside(x,y,508,596,290,388) && maxLevel >= 6) switchState(LEVEL6);
-            if(isInside(x,y,621,709,290,388) && maxLevel >= 7) switchState(LEVEL7);
-            if(isInside(x,y,337,426,390,490) && maxLevel >= 8) switchState(LEVEL8);
-            if(isInside(x,y,450,538,390,490) && maxLevel >= 9) switchState(LEVEL9);
-            if(isInside(x,y,914,969,20,76)) switchState(MENU);
-            if(isInside(x,y,717,925,553,591)) switchState(GUIDE);
-            if(isInside(x,y,71,241,553,591)) switchState(HIGHSCORE);
-            if(isInside(x,y,440,568,553,591)) switchState(SHOP);
+            if(isInside(x,y,450,538,181,279) && maxLevel >= 2)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL2);
+            }
+            if(isInside(x,y,562,651,181,279) && maxLevel >= 3)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL3);
+            }
+            if(isInside(x,y,282,371,290,388) && maxLevel >= 4)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL4);
+            }
+            if(isInside(x,y,395,483,290,388) && maxLevel >= 5)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL5);
+            }
+            if(isInside(x,y,508,596,290,388) && maxLevel >= 6)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL6);
+            }
+            if(isInside(x,y,621,709,290,388) && maxLevel >= 7)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL7);
+            }
+            if(isInside(x,y,337,426,390,490) && maxLevel >= 8)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL8);
+            }
+            if(isInside(x,y,450,538,390,490) && maxLevel >= 9)
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL9);
+            }
+            if(isInside(x,y,914,969,20,76))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(MENU);
+            }
+            if(isInside(x,y,717,925,553,591))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(GUIDE);
+            }
+            if(isInside(x,y,71,241,553,591))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(HIGHSCORE);
+            }
+            if(isInside(x,y,440,568,553,591))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(SHOP);
+            }
             break;
         default:
             break;
@@ -190,8 +338,17 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,850,903,58,112)) switchState(MENU);
-            if(isInside(x,y,557,607,421,444)){ isEnglish = !isEnglish; switchState(SETTING);}
+            if(isInside(x,y,850,903,58,112))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(MENU);
+            }
+            if(isInside(x,y,557,607,421,444))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                isEnglish = !isEnglish;
+                switchState(SETTING);
+            }
             if(isInside(x,y,480,527,277,304)) Mix_VolumeMusic(14*0);
             if(isInside(x,y,528,543,288,293)) Mix_VolumeMusic(14*1);
             if(isInside(x,y,544,559,288,293)) Mix_VolumeMusic(14*2);
@@ -226,7 +383,7 @@ void Game::renderGame(){
         {
             SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
             std::string temp = std::to_string(gCoin);
-            text->Render(temp.c_str(), 110, 70, 0);
+            text->Render(temp.c_str(), 110, 58, 0);
         }
         break;
     case HIGHSCORE:
@@ -267,8 +424,8 @@ void Game::renderGame(){
         {
             SDL_RenderCopy(Game::gRenderer,background,NULL,NULL);
             text->Render("You die, too noob", 496, 240, 1);
-            text->Render("Death by ", 496, 300, 1);
-            text->Render("Good luck", 496, 360, 1);
+            text->Render("You die, too noob", 496, 300, 1);
+            text->Render("You die, too noob", 496, 360, 1);
         }
         break;
     case LEVEL1:
@@ -284,7 +441,7 @@ void Game::renderGame(){
         {
             lava->Render(player->xpos, player->ypos);
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 50; i++)
         {
             if(coin[i] == nullptr) break;
             coin[i]->Render(player->xpos, player->ypos);
@@ -304,22 +461,22 @@ void Game::renderGame(){
             if(trap[i] == nullptr) break;
             trap[i]->Render(player->xpos, player->ypos);
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 10; i++)
         {
             if(peak[i] == nullptr) break;
             peak[i]->Render(player->xpos, player->ypos);
         }
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 25; i++)
         {
             if(bomb[i] == nullptr) break;
             bomb[i]->Render(player->xpos, player->ypos);
         }
-        {
-            std::string temp = "Coin: " + std::to_string(gCoin);
-            text->Render(temp.c_str(), 30, 20, 0);
-            temp = "Time: " + std::to_string(SDL_GetTicks()-startTime);
-            text->Render(temp.c_str(), 30, 60, 0);
-        }
+//        {
+//            std::string temp = "Coin: " + std::to_string(gCoin);
+//            text->Render(temp.c_str(), 30, 20, 0);
+//            temp = "Time: " + std::to_string(SDL_GetTicks()-startTime) + " ms";
+//            text->Render(temp.c_str(), 30, 60, 0);
+//        }
         break;
     default:
         break;
@@ -371,6 +528,19 @@ void Game::enterState(State id){
         player = new Player("Assets/Character/spider.png",25,12);
         map = new Map(currentLevel);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        coin[0] = new Coin (32,18);
+        coin[1] = new Coin (29,23);
+        coin[2] = new Coin (23,24);
+        coin[3] = new Coin (15,30);
+        coin[4] = new Coin (18,32);
+        coin[5] = new Coin (27,34);
+        coin[6] = new Coin (20,24);
+        coin[7] = new Coin (31,43);
+        coin[8] = new Coin (29,49);
+        coin[9] = new Coin (37,57);
+        coin[10] = new Coin (34,59);
+        coin[11] = new Coin (33,54);
+        coin[12] = new Coin (32,25);
         bat[0] = new Bat (30,49,0);
         bat[1] = new Bat (32,51,0);
         bat[2] = new Bat (35,56,0);
@@ -393,6 +563,36 @@ void Game::enterState(State id){
         player = new Player("Assets/Character/spider.png",42,97);
         map = new Map(currentLevel);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        coin[0] = new Coin (42,99);
+        coin[1] = new Coin (35,95);
+        coin[2] = new Coin (26,97);
+        coin[3] = new Coin (35,90);
+        coin[4] = new Coin (34,93);
+        coin[5] = new Coin (39,88);
+        coin[6] = new Coin (41,91);
+        coin[7] = new Coin (37,84);
+        coin[8] = new Coin (42,75);
+        coin[9] = new Coin (46,71);
+        coin[10] = new Coin (33,73);
+        coin[11] = new Coin (35,76);
+        coin[12] = new Coin (28,76);
+        coin[13] = new Coin (27,64);
+        coin[14] = new Coin (35,59);
+        coin[15] = new Coin (40,53);
+        coin[16] = new Coin (38,62);
+        coin[17] = new Coin (46,59);
+        coin[18] = new Coin (49,53);
+        coin[19] = new Coin (48,40);
+        coin[20] = new Coin (35,54);
+        coin[21] = new Coin (26,43);
+        coin[22] = new Coin (20,40);
+        coin[23] = new Coin (26,37);
+        coin[24] = new Coin (21,30);
+        coin[25] = new Coin (30,16);
+        coin[26] = new Coin (25,26);
+        coin[27] = new Coin (37,11);
+        coin[28] = new Coin (23,10);
+        coin[29] = new Coin (27,12);
         bat[0] = new Bat (32,96,1);
         bat[1] = new Bat (28,94,1);
         bat[2] = new Bat (30,88,1);
@@ -481,6 +681,48 @@ void Game::enterState(State id){
         player = new Player("Assets/Character/spider.png",52,60);
         map = new Map(currentLevel);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
+        coin[0] = new Coin (52,57);
+        coin[1] = new Coin (41,58);
+        coin[2] = new Coin (44,52);
+        coin[3] = new Coin (43,43);
+        coin[4] = new Coin (55,54);
+        coin[5] = new Coin (54,53);
+        coin[6] = new Coin (49,51);
+        coin[7] = new Coin (57,44);
+        coin[8] = new Coin (64,50);
+        coin[9] = new Coin (54,41);
+        coin[10] = new Coin (52,19);
+        coin[11] = new Coin (45,17);
+        coin[12] = new Coin (43,13);
+        coin[13] = new Coin (47,26);
+        coin[14] = new Coin (25,31);
+        coin[15] = new Coin (19,31);
+        coin[16] = new Coin (16,20);
+        coin[17] = new Coin (26,29);
+        coin[18] = new Coin (31,29);
+        coin[19] = new Coin (39,25);
+        coin[20] = new Coin (37,23);
+        coin[21] = new Coin (26,24);
+        coin[22] = new Coin (34,20);
+        coin[23] = new Coin (28,12);
+        coin[24] = new Coin (37,18);
+        trap[0] = new Trap (52,19,2);
+        trap[1] = new Trap (47,26,2);
+        trap[2] = new Trap (41,13,2);
+        trap[3] = new Trap (43,13,1);
+        trap[4] = new Trap (49,45,1);
+        trap[5] = new Trap (48,46,3);
+        trap[6] = new Trap (48,44,4);
+        trap[7] = new Trap (47,45,2);
+        trap[8] = new Trap (22,28,4);
+        trap[9] = new Trap (23,29,1);
+        trap[10] = new Trap (36,16,3);
+        trap[11] = new Trap (35,13,2);
+        trap[12] = new Trap (35,14,3);
+        trap[13] = new Trap (35,15,2);
+        trap[14] = new Trap (25,16,3);
+        trap[15] = new Trap (26,16,3);
+        trap[16] = new Trap (27,16,3);
         bomb[0] = new Bomb (54,23,2);
         bomb[1] = new Bomb (53,15,3);
         bomb[2] = new Bomb (47,19,3);
@@ -523,6 +765,30 @@ void Game::enterState(State id){
         teleporter[16] = new Teleporter (20,71);
         teleporter[17] = new Teleporter (35,48);
         teleporter[18] = new Teleporter (20,71);
+        coin[0] = new Coin (48,10);
+        coin[1] = new Coin (53,24);
+        coin[2] = new Coin (43,25);
+        coin[3] = new Coin (43,19);
+        coin[4] = new Coin (61,19);
+        coin[5] = new Coin (60,21);
+        coin[6] = new Coin (31,21);
+        coin[7] = new Coin (34,29);
+        coin[8] = new Coin (23,19);
+        coin[9] = new Coin (24,26);
+        coin[10] = new Coin (27,26);
+        coin[11] = new Coin (28,34);
+        coin[12] = new Coin (27,32);
+        coin[13] = new Coin (24,36);
+        coin[14] = new Coin (20,39);
+        coin[15] = new Coin (27,43);
+        coin[16] = new Coin (35,45);
+        coin[17] = new Coin (17,55);
+        coin[18] = new Coin (36,63);
+        coin[19] = new Coin (41,58);
+        coin[20] = new Coin (43,63);
+        coin[21] = new Coin (32,59);
+        coin[22] = new Coin (30,64);
+        coin[23] = new Coin (18,69);
         bat[0] = new Bat (15,68,1);
         bat[1] = new Bat (18,72,0);
         bomb[0] = new Bomb (25,62,1);
@@ -610,6 +876,16 @@ void Game::enterState(State id){
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         teleporter[0] = new Teleporter (22,22);
         teleporter[1] = new Teleporter (24,22);
+        coin[0] = new Coin (40,18);
+        coin[1] = new Coin (36,14);
+        coin[2] = new Coin (26,13);
+        coin[3] = new Coin (21,16);
+        coin[4] = new Coin (16,19);
+        coin[5] = new Coin (16,22);
+        coin[6] = new Coin (18,21);
+        coin[7] = new Coin (20,23);
+        coin[8] = new Coin (30,19);
+        coin[9] = new Coin (27,17);
         bomb[0] = new Bomb (29,18,3);
         bomb[1] = new Bomb (21,15,2);
         bomb[2] = new Bomb (17,19,3);
@@ -640,6 +916,9 @@ void Game::enterState(State id){
         teleporter[0] = new Teleporter (17,18);
         teleporter[1] = new Teleporter (23,18);
         coin[0] = new Coin (23,16);
+        coin[1] = new Coin (15,19);
+        coin[2] = new Coin (27,20);
+        coin[3] = new Coin (15,22);
         bomb[0] = new Bomb (29,16,3);
         trap[0] = new Trap (18,23,4);
         trap[1] = new Trap (19,23,4);
@@ -658,6 +937,34 @@ void Game::enterState(State id){
         player = new Player("Assets/Character/robin.png",20,73);
         camera = {player->xpos-480, player->ypos-320, 992, 672};
         lava = new Lava(0,79);
+        coin[0] = new Coin (19,57);
+        coin[1] = new Coin (15,51);
+        coin[2] = new Coin (20,51);
+        coin[3] = new Coin (15,45);
+        coin[4] = new Coin (23,39);
+        coin[5] = new Coin (16,32);
+        coin[6] = new Coin (21,26);
+        coin[7] = new Coin (15,27);
+        coin[8] = new Coin (21,23);
+        coin[9] = new Coin (18,20);
+        coin[10] = new Coin (21,19);
+        coin[11] = new Coin (17,16);
+        trap[0] = new Trap (24,69,2);
+        trap[1] = new Trap (24,60,3);
+        trap[2] = new Trap (19,55,4);
+        trap[3] = new Trap (21,55,4);
+        trap[4] = new Trap (20,51,4);
+        trap[5] = new Trap (19,18,2);
+        trap[5] = new Trap (15,16,1);
+        trap[6] = new Trap (25,15,3);
+        bomb[0] = new Bomb (24,65,2);
+        bomb[1] = new Bomb (25,56,3);
+        bomb[2] = new Bomb (24,53,2);
+        bomb[3] = new Bomb (17,30,1);
+        bomb[4] = new Bomb (24,23,2);
+        bat[0] = new Bat(24,70,0);
+        bat[1] = new Bat(19,60,1);
+        bat[2] = new Bat(16,39,1);
         break;
     default:
         break;
@@ -693,16 +1000,15 @@ void Game::exitState(State id){
     case LEVEL9:
         Mix_FadeInMusic(gMusic,-1,500);
         delete text;
-        delete player;
-        delete map;
-        delete lava;
-        for (int i = 0; i < 20; i++) delete coin[i];
-        for (int i = 0; i < 24; i++) delete bomb[i];
-        for (int i = 0; i < 7; i++) delete peak[i];
-        for (int i = 0; i < 20; i++) delete bat[i];
-        for (int i = 0; i < 63; i++) delete trap[i];
-        for (int i = 0; i < 20; i++) delete coin[i];
-        for (int i = 0; i < 20; i++) delete teleporter[i];
+        player = nullptr;
+        map = nullptr;
+        lava = nullptr;
+        for (int i = 0; i < 50; i++) coin[i] = nullptr;
+        for (int i = 0; i < 25; i++) bomb[i] = nullptr;
+        for (int i = 0; i < 10; i++) peak[i] = nullptr;
+        for (int i = 0; i < 20; i++) bat[i] = nullptr;
+        for (int i = 0; i < 65; i++) trap[i] = nullptr;
+        for (int i = 0; i < 20; i++) teleporter[i] = nullptr;
         break;
     default:
         break;
@@ -724,7 +1030,7 @@ void Game::updateGame(int x){
         if(!x)
         {
             if (lava != nullptr) lava->Update();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 50; i++)
             {
                 if(coin[i] == nullptr) break;
                 coin[i]->Update();
@@ -734,7 +1040,7 @@ void Game::updateGame(int x){
                 if(teleporter[i] == nullptr) break;
                 teleporter[i]->Update();
             }
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 25; i++)
             {
                 if (bomb[i] == nullptr) break;
                 bomb[i]->Update(map);
@@ -744,7 +1050,7 @@ void Game::updateGame(int x){
                 if(trap[i] == nullptr) break;
                 trap[i]->Update();
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if(peak[i] == nullptr) break;
                 peak[i]->Update();
@@ -761,16 +1067,17 @@ void Game::updateGame(int x){
             isLose = true;
             break;
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 50; i++)
         {
             if(coin[i] == nullptr) break;
             if(player->Collision(coin[i]->hitbox) && !coin[i]->collected)
             {
+                Mix_PlayChannel(-1,gChunk3,0);
                 coin[i]->collected = true;
                 gCoin++;
             }
         }
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 25; i++)
         {
             if(bomb[i] == nullptr) break;
             if(player->Collision(bomb[i]->hitbox) && bomb[i]->wait == false)
@@ -786,6 +1093,7 @@ void Game::updateGame(int x){
             {
                 if(trap[i]->activated && SDL_GetTicks() - trap[i]->activatedTime > 400)
                 {
+                    Mix_PlayChannel(-1,gChunk6,0);
                     isLose = true;
                     break;
                 }
@@ -801,15 +1109,17 @@ void Game::updateGame(int x){
             if(bat[i] == nullptr) break;
             if(player->Collision(bat[i]->hitbox))
             {
+                Mix_PlayChannel(-1,gChunk6,0);
                 isLose = true;
                 break;
             }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 10; i++)
         {
             if(peak[i] == nullptr) break;
             if(player->Collision(peak[i]->hitbox) && peak[i]->activated)
             {
+                Mix_PlayChannel(-1,gChunk6,0);
                 isLose = true;
                 break;
             }
@@ -925,7 +1235,7 @@ void Game::updateGame(int x){
 
 
 
-bool Game::isInside(int x, int y,int x1, int x2, int y1, int y2)
+bool Game::isInside(int x, int y, int x1, int x2, int y1, int y2)
 {
     return (x1 <= x && x <= x2 && y1 <= y && y <= y2);
 }
@@ -935,7 +1245,7 @@ void Game::switchState(State id)
     Game::enterState(id);
     gState = id;
     changeState = true;
-    SDL_Delay(100);
+    SDL_Delay(75);
 }
 void Game::initGame()
 {
@@ -945,7 +1255,12 @@ void Game::initGame()
     gWindow = SDL_CreateWindow("Escape From Cave",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 992, 672, 0);
     Mix_OpenAudio( 30000, MIX_DEFAULT_FORMAT, 2, 2048 );
     gMusic = Mix_LoadMUS("Assets/Sound/music.mp3");
-    gChunk1 = Mix_LoadWAV("Assets/Sound/chunk1.wav");
+    gChunk1 = Mix_LoadWAV("Assets/Sound/chunk2.wav");
+    gChunk2 = Mix_LoadWAV("Assets/Sound/Tramplin.wav");
+    gChunk3 = Mix_LoadWAV("Assets/Sound/PickupCoin.mp3");
+    gChunk4 = Mix_LoadWAV("Assets/Sound/win1.wav");
+    gChunk5 = Mix_LoadWAV("Assets/Sound/Portal.wav");
+    gChunk6 = Mix_LoadWAV("Assets/Sound/Spike.wav");
     Mix_PlayMusic(gMusic,-1);
     gRenderer = SDL_CreateRenderer(gWindow,-1,0);
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
