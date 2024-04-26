@@ -7,6 +7,7 @@
 #include "Trap.hpp"
 #include "Coin.hpp"
 #include "Lava.hpp"
+#include "Ghost.hpp"
 #include "Teleporter.hpp"
 #include "../manager/TextManager.hpp"
 #include "../manager/TextureManager.hpp"
@@ -25,6 +26,7 @@ Peak* peak[10];
 Trap* trap[65];
 Coin* coin[50];
 Lava* lava;
+Ghost* ghost;
 Teleporter *teleporter[20];
 SDL_Rect camera;
 
@@ -226,6 +228,11 @@ void Game::handleEvent(){
                     Mix_PlayChannel(-1,gChunk1,0);
                     switchState(LEVEL7);
                 }
+                else if(currentLevel == 7)
+                {
+                    Mix_PlayChannel(-1,gChunk1,0);
+                    switchState(LEVEL8);
+                }
                 else
                 {
                     Mix_PlayChannel(-1,gChunk1,0);
@@ -267,7 +274,11 @@ void Game::handleEvent(){
         {
         case SDL_MOUSEBUTTONDOWN:
             SDL_GetMouseState(&x,&y);
-            if(isInside(x,y,337,426,181,289))switchState(LEVEL1);
+            if(isInside(x,y,337,426,181,289))
+            {
+                Mix_PlayChannel(-1,gChunk1,0);
+                switchState(LEVEL1);
+            }
             if(isInside(x,y,450,538,181,279) && maxLevel >= 2)
             {
                 Mix_PlayChannel(-1,gChunk1,0);
@@ -435,8 +446,13 @@ void Game::renderGame(){
     case LEVEL5:
     case LEVEL6:
     case LEVEL7:
+    case LEVEL8:
         map->DrawMap(camera);
         player->Render();
+        if(ghost != nullptr)
+        {
+            ghost->Render(player->xpos, player->ypos);
+        }
         if(lava != nullptr)
         {
             lava->Render(player->xpos, player->ypos);
@@ -966,6 +982,16 @@ void Game::enterState(State id){
         bat[1] = new Bat(19,60,1);
         bat[2] = new Bat(16,39,1);
         break;
+    case LEVEL8:
+        text = new TextManager(30);
+        Mix_FadeOutMusic(500);
+        currentLevel = 8;
+        startTime = SDL_GetTicks();
+        map = new Map(currentLevel);
+        player = new Player("Assets/Character/robin.png",26,23);
+        camera = {player->xpos-480, player->ypos-320, 992, 672};
+        ghost = new Ghost (49, 47, map);
+        break;
     default:
         break;
     }
@@ -1001,6 +1027,7 @@ void Game::exitState(State id){
         Mix_FadeInMusic(gMusic,-1,500);
         delete text;
         player = nullptr;
+        ghost = nullptr;
         map = nullptr;
         lava = nullptr;
         for (int i = 0; i < 50; i++) coin[i] = nullptr;
@@ -1025,10 +1052,12 @@ void Game::updateGame(int x){
     case LEVEL5:
     case LEVEL6:
     case LEVEL7:
+    case LEVEL8:
         player->Update(camera, player->xpos, player->ypos);
         /// Update objects ///
         if(!x)
         {
+            if (ghost != nullptr) ghost->Update(player->xpos, player->ypos);
             if (lava != nullptr) lava->Update();
             for (int i = 0; i < 50; i++)
             {

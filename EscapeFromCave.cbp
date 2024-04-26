@@ -44,6 +44,8 @@
 		<Unit filename="src/Coin.hpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Game.hpp" />
+		<Unit filename="src/Ghost.cpp" />
+		<Unit filename="src/Ghost.hpp" />
 		<Unit filename="src/Lava.cpp" />
 		<Unit filename="src/Lava.hpp" />
 		<Unit filename="src/Map.cpp" />

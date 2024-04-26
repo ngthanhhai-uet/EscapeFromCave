@@ -247,7 +247,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1713749043 source:x:\escapefromcave\src\game.cpp
+1713764328 source:x:\escapefromcave\src\game.cpp
 	"Game.hpp"
 	"Bat.hpp"
 	"Map.hpp"
@@ -257,6 +257,7 @@
 	"Trap.hpp"
 	"Coin.hpp"
 	"Lava.hpp"
+	"Ghost.hpp"
 	"Teleporter.hpp"
 	"../manager/TextManager.hpp"
 	"../manager/TextureManager.hpp"
@@ -281,7 +282,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1713654501 source:x:\escapefromcave\src\trap.cpp
+1713750415 source:x:\escapefromcave\src\trap.cpp
 	"Game.hpp"
 	"Trap.hpp"
 	"../manager/TextureManager.hpp"
@@ -291,7 +292,7 @@
 	"Game.hpp"
 	"../manager/TextureManager.hpp"
 
-1713655516 source:x:\escapefromcave\src\map.cpp
+1713762751 source:x:\escapefromcave\src\map.cpp
 	"Game.hpp"
 	"Map.hpp"
 	"../manager/TextureManager.hpp"
@@ -311,4 +312,173 @@
 	"Map.hpp"
 	"../manager/TextureManager.hpp"
 	"Player.hpp"
+
+1713769316 source:x:\escapefromcave\src\ghost.cpp
+	"Ghost.hpp"
+	"Game.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+	<vector>
+	<queue>
+	<algorithm>
+
+1713764257 x:\escapefromcave\src\ghost.hpp
+	"Map.hpp"
+
+1713662709 source:z:\escapefromcave\manager\textmanager.cpp
+	"../src/Game.hpp"
+	"TextManager.hpp"
+
+1713748497 z:\escapefromcave\src\game.hpp
+	<iostream>
+	<fstream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1713655354 z:\escapefromcave\manager\textmanager.hpp
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+
+1713711307 source:z:\escapefromcave\manager\texturemanager.cpp
+	"../src/Game.hpp"
+	"TextureManager.hpp"
+
+1713655354 z:\escapefromcave\manager\texturemanager.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713654358 source:z:\escapefromcave\src\bat.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+
+1713655354 z:\escapefromcave\src\bat.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"Map.hpp"
+
+1713655354 z:\escapefromcave\src\map.hpp
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+
+1713750019 source:z:\escapefromcave\src\bomb.cpp
+	"Game.hpp"
+	"Map.hpp"
+	"Bomb.hpp"
+	"../manager/TextureManager.hpp"
+
+1713655354 z:\escapefromcave\src\bomb.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"Map.hpp"
+
+1713661614 source:z:\escapefromcave\src\coin.cpp
+	"Coin.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713655354 z:\escapefromcave\src\coin.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713764328 source:z:\escapefromcave\src\game.cpp
+	"Game.hpp"
+	"Bat.hpp"
+	"Map.hpp"
+	"Player.hpp"
+	"Bomb.hpp"
+	"Peak.hpp"
+	"Trap.hpp"
+	"Coin.hpp"
+	"Lava.hpp"
+	"Ghost.hpp"
+	"Teleporter.hpp"
+	"../manager/TextManager.hpp"
+	"../manager/TextureManager.hpp"
+
+1713744245 z:\escapefromcave\src\player.hpp
+	"Game.hpp"
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713655354 z:\escapefromcave\src\peak.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713642479 z:\escapefromcave\src\trap.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713655354 z:\escapefromcave\src\lava.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713764257 z:\escapefromcave\src\ghost.hpp
+	"Map.hpp"
+
+1713655354 z:\escapefromcave\src\teleporter.hpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1713769316 source:z:\escapefromcave\src\ghost.cpp
+	"Ghost.hpp"
+	"Game.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+	<vector>
+	<queue>
+	<algorithm>
+
+1713743287 source:z:\escapefromcave\src\lava.cpp
+	"Lava.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713730507 source:z:\escapefromcave\src\main.cpp
+	"Game.hpp"
+
+1713762751 source:z:\escapefromcave\src\map.cpp
+	"Game.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+
+1713731845 source:z:\escapefromcave\src\peak.cpp
+	"Peak.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713749043 source:z:\escapefromcave\src\player.cpp
+	"Game.hpp"
+	"Map.hpp"
+	"../manager/TextureManager.hpp"
+	"Player.hpp"
+
+1713654525 source:z:\escapefromcave\src\teleporter.cpp
+	"Teleporter.hpp"
+	"Game.hpp"
+	"../manager/TextureManager.hpp"
+
+1713750415 source:z:\escapefromcave\src\trap.cpp
+	"Game.hpp"
+	"Trap.hpp"
+	"../manager/TextureManager.hpp"
 

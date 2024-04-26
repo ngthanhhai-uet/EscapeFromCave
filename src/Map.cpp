@@ -26,7 +26,7 @@ void Map::LoadMap(int level)
     if (level == 5) {width = 56; height = 38;}
     if (level == 6) {width = 45; height = 34;}
     if (level == 7) {width = 41; height = 85;}
-    if (level == 8) {;}
+    if (level == 8) {width = 70; height = 60;}
     if (level == 9) {;}
     curr_map.resize(height, std::vector<int>(width));
     for (int i = 0; i < height; i++)
